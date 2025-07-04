@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">  
+    <title>Personal Homepage</title>
+    <link rel="stylesheet" href="styles.css"> <!-- External CSS -->
+    <style>
+        /* Inline CSS for quote class, italics */
+        .quote { font-style: italic; color: darkgreen; }
+    </style>
+</head>
+<body>
+
+    <!-- Header with name and photo -->
+    <header>
+        <img src="profilePic.jpg.gif" alt="Your Photo" width="120">
+        <h1>Mimia Mozammel</h1>
+        <h7>Creative Designer & Dreamer</h7>
+        <p class="intro">Welcome to my little corner of the internet! I'm passionate about creating beautiful experiences that blend creativity with purpose. Let me share my journey with you.</p>
+        <nav>
+            <a href="#about">About</a> |
+            <a href="#links">Links</a> |
+            <a href="#quote">Quote</a> |
+            <a href="#list">Favorites</a> |
+            <a href="#table">Table</a>
+        </nav>
+    </header>
+
+    <!-- About section -->
+
+<section id="about">
+    <h2>About Me</h2>
+    <div class="about-grid">
+        <div class="about-card">
+            <h3>My Story</h3>
+            <p>I discovered my love for design while doodling...</p>
+        </div>
+        <div class="about-card">
+            <h3>Fun Facts</h3>
+            <p>I drink iced coffee even in winter, and I name my variables after characters I like.</p>
+        </div>
+        <div class="about-card">
+            <h3>Skills & Interests</h3>
+            <p>UI/UX Design, HTML/CSS/JS, Creativity, Storytelling, Visual Art</p>
+        </div>
+        <div class="about-card">
+            <h3>Based On</h3>
+            <p>My work is deeply influenced by curiosity, empathy, and pastel color palettes 🎨</p>
+        </div>
+    </div>
+</section>
+
+    <!-- Categorized links -->
+    <section id="links" class="no-block">
+        <h2>Links</h2>
+    </section>
+    <section>
+        <ul>
+            <li><a href="hobbies.html">Hobbies (Internal link)</a></li>
+            <li><a href="projects.html">Projects</a></li>
+            <li><a href="https://www.bracu.ac.bd" target="_blank">BRAC University</a></li>
+            <li><a href="https://discord.gg/jX3AqBPx" target="_blank">CSE 391 Discord</a></li>
+            <li>Learn more <a href="https://developer.mozilla.org/">here</a> about web development. (Embedded link)</li>
+        </ul>
+    </section>
+
+    <!-- Quote -->
+    <section id="quote">
+        <h2>Favorite Quote</h2>
+        <p class="quote">"Not all those who wander are lost." - J.R.R. Tolkien</p>
+    </section>
+
+    <!-- List of favorite things -->
+    <section id="list" class="no-block">
+        <h2>My Favorites</h2>
+    </section>
+    <section>
+        <div class="list-block">
+            <h2>Top 5 Favorite Movies</h2>
+            <ol>
+                <li>Black Swan</li>
+                <li>Interstellar</li>
+                <li>Harry Potter and the Sorcerer's Stone</li>
+                <li>The Dark Knight</li>
+                <li>Avengers: Infinity Wars</li>
+            </ol>
+        </div>
+        <div class="list-block">
+            <h2>Top 5 Music Artists</h2>
+            <ol>
+                <li>Taylor Swift</li>
+                <li>Arctic Monkeys</li>
+                <li>The Weeknd</li>
+            </ol>
+        </div>
+    </section>
+
+    
+
+    <!-- Table -->
+    <section id="table">
+        <h2>My Weekly Schedule</h2>
+        <table border="1">
+            <tr>
+                <th>Day</th>
+                <th>Activities</th>
+            </tr>
+            <tr>
+                <td>Monday</td>
+                <td>Classes, Study, Gym</td>
+            </tr>
+            <tr>
+                <td colspan="2">Weekend: Family Time and Gaming</td>
+            </tr>
+        </table>
+    </section>
+
+    <!-- Footer with JS -->
+    <footer>
+        <p>&copy; 2025 Your Name | Location: Dhaka, Bangladesh</p>
+        <p id="lastModified"></p>
+    </footer>
+
+    <script>
+        // Display last modified date
+        document.getElementById("lastModified").innerText =
+            "Last Modified: " + document.lastModified;
+    </script>
+
+</body>
+</html>
