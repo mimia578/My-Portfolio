@@ -1,29 +1,29 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <meta charset="UTF-8">  
     <title>Personal Homepage</title>
-    <link rel="stylesheet" href="styles.css"> <!-- External CSS -->
-    <style>
-        /* Inline CSS for quote class, italics */
-        .quote { font-style: italic; color: darkgreen; }
-    </style>
+    <link rel="stylesheet" href="styles.css"> 
 </head>
 <body>
 
-    <!-- Header with name and photo -->
+    <!-- Header with name and photo -->  
     <header>
-        <img src="profilePic.jpg.gif" alt="Your Photo" width="120">
+        <img src="mypic.jpg" alt="Your Photo" width="120">
         <h1>Mimia Mozammel</h1>
         <h7>Creative Designer & Dreamer</h7>
-        <p class="intro">Welcome to my little corner of the internet! I'm passionate about creating beautiful experiences that blend creativity with purpose. Let me share my journey with you.</p>
-        <nav>
-            <a href="#about">About</a> |
-            <a href="#links">Links</a> |
-            <a href="#quote">Quote</a> |
-            <a href="#list">Favorites</a> |
-            <a href="#table">Table</a>
+        <p class="intro">Welcome to my little corner of the internet! Let me share my journey with you.</p>
+        <blockquote class="quote">
+        "It is never too late to be what you might have been."- George Eliot.
+        </blockquote>
+
+        <nav> <!--nav is easier and more accessible to use than p-->
+             <a href=project.html><i class="fas fa-suitcase"></i>  View My Work</a> |
+            <a href="#links">Links and Resources</a> |
+            <a href=contactpage.html> <i class="fas fa-phone"></i>  Get in Touch</a>    
         </nav>
+ 
     </header>
 
     <!-- About section -->
@@ -33,91 +33,105 @@
     <div class="about-grid">
         <div class="about-card">
             <h3>My Story</h3>
-            <p>I discovered my love for design while doodling...</p>
+            <p>My journey began as a young girl with a dream — to become independent and achieve meaningful success. Over the years, that ambition has evolved into a deep passion for building and creating with technology.</p>
         </div>
         <div class="about-card">
             <h3>Fun Facts</h3>
-            <p>I drink iced coffee even in winter, and I name my variables after characters I like.</p>
+            <p>I drink iced coffee even in winter, and I name my variables after characters I like. Click  <a href="#favorites">here</a> to learn more about me</p>
         </div>
         <div class="about-card">
             <h3>Skills & Interests</h3>
-            <p>UI/UX Design, HTML/CSS/JS, Creativity, Storytelling, Visual Art</p>
+            <ul class="icon-list">
+            <li><i class="fas fa-code"></i> MERN Stack & Django</li>
+            <li><i class="fas fa-microchip"></i> Electronics & VLSI Design</li>
+            <li><i class="fas fa-terminal"></i> Python, SQL, Assembly</li>
+            <li><i class="fas fa-lightbulb"></i> Problem Solving & Creativity</li>
+            </ul>
+
+
         </div>
         <div class="about-card">
-            <h3>Based On</h3>
-            <p>My work is deeply influenced by curiosity, empathy, and pastel color palettes 🎨</p>
+            <h3> 📍Based On</h3>
+            <ul>
+                <li>Currently living in Dhaka, Bangladesh</li>
+                <li>Pursuing a Bachelor's degree in Computer Science and Engineering (CSE) at BRAC University</li>
+            </ul>
         </div>
     </div>
 </section>
 
-    <!-- Categorized links -->
-    <section id="links" class="no-block">
-        <h2>Links</h2>
-    </section>
-    <section>
-        <ul>
-            <li><a href="hobbies.html">Hobbies (Internal link)</a></li>
-            <li><a href="projects.html">Projects</a></li>
-            <li><a href="https://www.bracu.ac.bd" target="_blank">BRAC University</a></li>
-            <li><a href="https://discord.gg/jX3AqBPx" target="_blank">CSE 391 Discord</a></li>
-            <li>Learn more <a href="https://developer.mozilla.org/">here</a> about web development. (Embedded link)</li>
-        </ul>
-    </section>
-
-    <!-- Quote -->
-    <section id="quote">
-        <h2>Favorite Quote</h2>
-        <p class="quote">"Not all those who wander are lost." - J.R.R. Tolkien</p>
-    </section>
-
-    <!-- List of favorite things -->
-    <section id="list" class="no-block">
-        <h2>My Favorites</h2>
-    </section>
-    <section>
-        <div class="list-block">
-            <h2>Top 5 Favorite Movies</h2>
-            <ol>
-                <li>Black Swan</li>
-                <li>Interstellar</li>
-                <li>Harry Potter and the Sorcerer's Stone</li>
-                <li>The Dark Knight</li>
-                <li>Avengers: Infinity Wars</li>
-            </ol>
+    <!-- links section -->
+<section id="links">
+    <h2>Important Links and Resources</h2>
+    <div class="about-grid">
+        <div class="about-card">
+             <ul><li>View my personal interests : <a href="hobby.html" class="hobbylink">Hobbies </a></li></ul>          
         </div>
-        <div class="list-block">
-            <h2>Top 5 Music Artists</h2>
-            <ol>
-                <li>Taylor Swift</li>
-                <li>Arctic Monkeys</li>
-                <li>The Weeknd</li>
-            </ol>
+        <div class="about-card">
+             <ul><li>Previously executed <a href="project.html">Projects</a></li></ul>
         </div>
+        <div class="about-card">
+             <ul><li><a href="https://www.bracu.ac.bd" target="_blank">BRAC University</a></li></ul>
+        </div>
+        <div class="about-card">
+            <ul><li><a href="https://discord.gg/jX3AqBPx" target="_blank">CSE 391 Discord</a></li></ul>
+        </div>
+        <div class="about-card">
+            <ul><li>Learn more <a href="https://developer.mozilla.org/">here</a> about web development.</li></ul>
+        </div>
+    </div>
     </section>
 
-    
 
-    <!-- Table -->
-    <section id="table">
-        <h2>My Weekly Schedule</h2>
-        <table border="1">
-            <tr>
-                <th>Day</th>
-                <th>Activities</th>
-            </tr>
-            <tr>
-                <td>Monday</td>
-                <td>Classes, Study, Gym</td>
-            </tr>
-            <tr>
-                <td colspan="2">Weekend: Family Time and Gaming</td>
-            </tr>
-        </table>
-    </section>
+<section id="favorites">
+  <h2>My Favorites</h2>
+
+  <div class="favorites-grid">
+    <div class="list-block">
+      <div class="movie-list">
+        <h3>🎬 Favorite Movies</h3>
+        <ol>
+          <li>Black Swan</li>
+          <li>Interstellar</li>
+          <li>Harry Potter and the Sorcerer's Stone</li>
+          <li>The Dark Knight</li>
+          <li>Avengers: Infinity War</li>
+        </ol>
+      </div>
+    </div>
+
+    <div class="list-block">
+      <div class="music-list">
+        <h3>🎵 Favorite Music Artists</h3>
+        <ol>
+          <li>Taylor Swift</li>
+          <li>Arctic Monkeys</li>
+          <li>The Weeknd</li>
+        </ol>
+      </div>
+    </div>
+
+    <div class="list-block">
+      <div class="book-list">
+        <h3>📚 Favorite Books</h3>
+        <ol>
+          <li>Atomic Habits</li>
+          <li>The Midnight Library</li>
+          <li>Harry Potter series</li>
+          <li>It Ends With Us</li>
+          <li>The Alchemist</li>
+        </ol>
+      </div>
+    </div>
+  </div>
+</section>
+
+ 
+
 
     <!-- Footer with JS -->
     <footer>
-        <p>&copy; 2025 Your Name | Location: Dhaka, Bangladesh</p>
+        <p>&copy; 2025 Mimia Mozammel | Location: Dhaka, Bangladesh</p>
         <p id="lastModified"></p>
     </footer>
 
