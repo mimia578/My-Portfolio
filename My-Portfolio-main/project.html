@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="project.css">
+    <link rel="stylesheet" href="styles.css">
+    <title>Projects</title>
+</head>
+<body>
+    <a href="index.html" class="back-button">Back to Home </a>
+<header>
+    <h1> My Projects </h1> 
+    <h2>Creative Works and Projects</h2>
+    <p class="intro">A collection of my favorite projects that showcase my passion for design, development, and creating meaningful digital experiences.</p>     
+</header>
+    <section class="project-container">
+        <div class="project-box">
+            <img src="https://images.pexels.com/photos/7988114/pexels-photo-7988114.jpeg" alt="Lost and Found Website" class="projectimg">
+            <h2>Lost and Found Website</h2>
+            <p class="intro">A Lost and Found platform with AI-powered auto-matching, user interaction, admin control, and gamified rewards.</p>
+            <button class="toggle-btn">Show Features</button>
+            <div class="feature-details">
+                <ul>
+                    <li>AI-powered auto-matching based on text, location, and time</li>
+                    <li>Create, edit, and delete lost/found item posts</li>
+                    <li>Attach images, descriptions, titles, and locations</li>
+                    <li>Comment, reply, and delete interactions on posts</li>
+                    <li>Bookmark and claim items through the platform</li>
+                    <li>Customizable user profiles with activity tracking</li>
+                    <li>Admin panel for reviewing, deleting, and moderating posts</li>
+                    <li>Automatic archiving of unresolved posts after 15 days</li>
+                    <li>Gamification with points, badges, and leaderboard system</li>
+                    <li>Confidence scoring and match notifications for admins and users</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="project-box">
+            <img src="https://images.pexels.com/photos/574070/pexels-photo-574070.jpeg" alt="Rental System" class="projectimg">
+            <h2>Vehicle and Garage Rental Management System</h2>
+            <p class="intro">A rental system with user profiles, owner dashboards, trip and parking tracking.</p>
+            <button class="toggle-btn">Show Features</button>
+            <div class="feature-details">
+                <ul>
+                    <li>Garage listing by verified owners with address, city, and type</li>
+                    <li>Vehicle registration with model, seat capacity, premium tag</li>
+                    <li>Trip booking with pickup/drop-off locations and time</li>
+                    <li>Parking system with booking duration, garage ID, customer type</li>
+                    <li>Admin panel for verifying owners, managing users and listings</li>
+                    <li>Analytics for cars and garages per owner</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="project-box">
+            <img src="game.png" alt="Zombiefied Game" class="projectimg">
+            <h2>Zombiefied: A 2D Horror Game</h2>
+            <p class="intro">A 2D top-down zombie shooter built using OpenGL (PyOpenGL).</p>
+            <button class="toggle-btn">Show Features</button>
+            <div class="feature-details">
+                <ul>
+                    <li>Top-down shooter format with zombie AI</li>
+                    <li>Real-time movement and shooting via keyboard</li>
+                    <li>Health system, score tracker, and game-over logic</li>
+                    <li>Level design using sprite-based environments</li>
+                    <li>Lightweight and built without external engines</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+    <section class="contact-section">
+        <h1>Like what you see?</h1>
+        <h3> I'm always excited to work on new projects and collaborate with amazing people. Let's create something beautiful together!</h3>
+        <div >
+            <a href="contactpage.html" class="contact-button"> Get in Touch </a>
+        </div>
+    </section>
+    <script>
+        const buttons = document.querySelectorAll(".toggle-btn");
+
+        buttons.forEach(btn => {
+            btn.addEventListener("click", () => {
+                const details = btn.nextElementSibling;
+                const isVisible = details.style.display === "block";
+                details.style.display = isVisible ? "none" : "block";
+                btn.textContent = isVisible ? "Show Features" : "Hide Features";
+            });
+        });
+    </script>
+</body>
+</html>

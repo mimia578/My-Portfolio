@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <meta charset="UTF-8">  
+    <title>Personal Homepage</title>
+    <link rel="stylesheet" href="styles.css"> 
+</head>
+<body>
+
+    <!-- Header with name and photo -->  
+    <header>
+        <img src="mypic.jpg" alt="Your Photo" width="120">
+        <h1>Mimia Mozammel</h1>
+        <h7>Creative Designer & Dreamer</h7>
+        <p class="intro">Welcome to my little corner of the internet! Let me share my journey with you.</p>
+        <blockquote class="quote">
+        "It is never too late to be what you might have been."- George Eliot.
+        </blockquote>
+
+        <nav> <!--nav is easier and more accessible to use than p-->
+             <a href=project.html><i class="fas fa-suitcase"></i>  View My Work</a> |
+            <a href="#links">Links and Resources</a> |
+            <a href=contactpage.html> <i class="fas fa-phone"></i>  Get in Touch</a>    
+        </nav>
+ 
+    </header>
+
+    <!-- About section -->
+
+<section id="about">
+    <h2>About Me</h2>
+    <div class="about-grid">
+        <div class="about-card">
+            <h3>My Story</h3>
+            <p>My journey began as a young girl with a dream — to become independent and achieve meaningful success. Over the years, that ambition has evolved into a deep passion for building and creating with technology.</p>
+        </div>
+        <div class="about-card">
+            <h3>Fun Facts</h3>
+            <p>I drink iced coffee even in winter, and I name my variables after characters I like. Click  <a href=hobby.html>here</a> to learn more about me</p>
+        </div>
+        <div class="about-card">
+            <h3>Skills & Interests</h3>
+            <ul class="icon-list">
+            <li><i class="fas fa-code"></i> MERN Stack & Django</li>
+            <li><i class="fas fa-microchip"></i> Electronics & VLSI Design</li>
+            <li><i class="fas fa-terminal"></i> Python, SQL, Assembly</li>
+            <li><i class="fas fa-lightbulb"></i> Problem Solving & Creativity</li>
+            </ul>
+
+
+        </div>
+        <div class="about-card">
+            <h3> 📍Based On</h3>
+            <ul>
+                <li>Currently living in Dhaka, Bangladesh</li>
+                <li>Pursuing a Bachelor's degree in Computer Science and Engineering (CSE) at BRAC University</li>
+            </ul>
+        </div>
+    </div>
+</section>
+
+    <!-- links section -->
+<section id="links">
+    <h2>Important Links and Resources</h2>
+    <div class="about-grid">
+        <div class="about-card">
+             <ul><li>View my personal interests : <a href="hobby.html" class="hobbylink">Hobbies </a></li></ul>          
+        </div>
+        <div class="about-card">
+             <ul><li>Previously executed <a href="project.html">Projects</a></li></ul>
+        </div>
+        <div class="about-card">
+             <ul><li><a href="https://www.bracu.ac.bd" target="_blank">BRAC University</a></li></ul>
+        </div>
+        <div class="about-card">
+            <ul><li><a href="https://discord.gg/jX3AqBPx" target="_blank">CSE 391 Discord</a></li></ul>
+        </div>
+        <div class="about-card">
+            <ul><li>Learn more <a href="https://developer.mozilla.org/">here</a> about web development.</li></ul>
+        </div>
+    </div>
+    </section>
+ 
+
+
+    <!-- Footer with JS -->
+    <footer>
+        <p>&copy; 2025 Mimia Mozammel | Location: Dhaka, Bangladesh</p>
+        <p id="lastModified"></p>
+    </footer>
+
+    <script>
+        // Display last modified date
+        document.getElementById("lastModified").innerText =
+            "Last Modified: " + document.lastModified;
+    </script>
+
+</body>
+</html>
