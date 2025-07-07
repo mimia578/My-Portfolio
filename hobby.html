@@ -4,36 +4,109 @@
     <meta charset="UTF-8">
     <title>My Hobbies & Interests</title>
     <link rel="stylesheet" href="hobby.css">
+    <link rel="stylesheet" href="styles.css">
 </head>
+
 <body>
-    <section class="hobbies-container">
+    <a href="index.html" class="back-button">Back to Home</a>
+    <header style="margin-top:30px">
+    <h1>Hobbies and Favourites</h1>
+    </header>
+    <style>
+        #favorites {
+            background-color: #fffaf5;
+            padding: 40px 20px;
+            border-radius: 16px;
+            text-align: center;
+            }
+
+            #favorites h2 {
+            font-size: 1.7em;
+            color: #4a2f2f;
+            margin-bottom: 30px;
+            }
+
+            .favorites-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 20px;
+            margin-top: 20px;
+
+            }
+
+    </style>
+
+    
+    <section class="about-container">
         <h2>My Hobbies & Interests</h2>
-        <div class="hobby-grid">
-            <div class="hobby-card">
+        <div class="about-grid">
+            <div style="background-color: #ffffff;" class="about-card">
                 <h3>Graphic Design</h3>
-                <p>I enjoy creating aesthetic visuals, experimenting with colors, and designing layouts that are both meaningful and eye-catching.</p>
+                <p style="color: #5c4033;">I enjoy creating aesthetic visuals, experimenting with colors, and designing layouts that are both meaningful and eye-catching.</p>
             </div>
-            <div class="hobby-card">
+            <div style="background-color: #ffffff;"  class="about-card">
                 <h3>Music</h3>
-                <p>From Taylor Swift to Arctic Monkeys, music inspires my creativity and keeps me company while working or relaxing.</p>
+                <p style="color: #5c4033;">From Taylor Swift to Arctic Monkeys, music inspires my creativity and keeps me company while working or relaxing.</p>
             </div>
-            <div class="hobby-card">
+            <div style="background-color: #ffffff;" class="about-card">
                 <h3>Film & Storytelling</h3>
-                <p>I’m fascinated by visual storytelling — I love analyzing film plots, cinematography, and watching emotionally rich narratives.</p>
+                <p style="color: #5c4033;">I’m fascinated by visual storytelling — I love analyzing film plots, cinematography, and watching emotionally rich narratives.</p>
             </div>
-            <div class="hobby-card">
+            <div style="background-color: #ffffff;" class="about-card">
                 <h3>Journaling</h3>
-                <p>Writing reflections in a physical notebook or digital journal helps me organize thoughts and express myself mindfully.</p>
+                <p style="color: #5c4033;">Writing reflections in a physical notebook or digital journal helps me organize thoughts and express myself mindfully.</p>
             </div>
-            <div class="hobby-card">
+            <div style="background-color: #ffffff;" class="about-card">
                 <h3>Web Design</h3>
-                <p>I like experimenting with HTML/CSS and designing cute personal websites that reflect personality and aesthetics.</p>
+                <p style="color: #5c4033;">I like experimenting with HTML/CSS and designing cute personal websites that reflect personality and aesthetics.</p>
             </div>
-            <div class="hobby-card">
+            <div style="background-color: #ffffff;"  class="about-card">
                 <h3>Collecting Stationery</h3>
-                <p>Pastel pens, washi tapes, and stickers bring me joy and often inspire my creative projects and journal spreads.</p>
+                <p style="color: #5c4033;">Pastel pens, washi tapes, and stickers bring me joy and often inspire my creative projects and journal spreads.</p>
             </div>
         </div>
     </section>
+    <section id="favorites">
+        <h2>My Favorites</h2>  
+        <div class="favorites-grid">
+          <div class="list-block">
+            <div class="movie-list">
+              <h3>🎬 Favorite Movies</h3>
+              <ol>
+                <li>Black Swan</li>
+                <li>Interstellar</li>
+                <li>Harry Potter and the Sorcerer's Stone</li>
+                <li>The Dark Knight</li>
+                <li>Avengers: Infinity War</li>
+              </ol>
+            </div>
+          </div>
+      
+          <div class="list-block">
+            <div class="music-list">
+              <h3>🎵 Favorite Music Artists</h3>
+              <ol>
+                <li>The Neighbourhood</li>
+                <li>Lana Del Rey</li>
+                <li>Arctic Monkeys</li>
+                <li>The Weeknd</li>
+              </ol>
+            </div>
+          </div>
+      
+          <div class="list-block">
+            <div class="book-list">
+              <h3>📚 Favorite Books</h3>
+              <ol>
+                <li>I'll Give You the Sun</li>
+                <li>Harry Potter series</li>
+                <li>It Ends With Us</li>
+                <li>The Alchemist</li>
+              </ol>
+            </div>
+          </div>
+        </div>
+    </section>
+
 </body>
 </html>
