@@ -53,8 +53,6 @@
     background-color: #8b5e3c;
 }
 
-/* Table styles */
-
 table {
     width: 70%;
     border-collapse: collapse;
@@ -69,7 +67,7 @@ table {
 #table h2 {
     text-align: center;
     margin-bottom: 20px;
-    color: #5c4033; /* optional for consistency */
+    color: #5c4033; 
 }
 
 
@@ -83,13 +81,3 @@ tr:nth-child(even) {
     background-color: #fdf2f8;
 }
 
-.contact-section{
-    text-align:center;
-    margin:auto
-
-
-}
-
-.contact-section h1{
-    font-size: medium;
-}

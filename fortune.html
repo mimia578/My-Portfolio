@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <link rel="stylesheet" href="fortune.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <title>Fortune Generator</title>
+</head>
+<header>
+    <p style="font-size: x-large;">  <i class="fas fa-star"></i> Fortune Teller <i class="fas fa-star"></i></p>
+    <p style="font-size: large; color:darkgray"> Discover what the universe has in store for you! </p>
+</header>
+<body>
+  <section class="fortune-grid">
+    <div class="fortune-box" id="fortuneBox">
+      <p class="fortune-quote" id="fortuneText">Loading fortune...</p>
+    </div>
+    <div class="fortune-button-grid">
+      <button onclick="applyStyle('style1')" class="button1">Style 1</button>
+      <button onclick="applyStyle('style2')" class="button2">Style 2</button>
+      <button onclick="applyStyle('style3')" class="button3">Style 3</button>
+      <button onclick="applyStyle('style4')" class="button4">Style 4</button>
+    </div>
+  </section>
+
+  <footer style="margin-top: 50px; text-align:center;">
+    <p>© 2025 Fortune Generator</p>
+  </footer>
+
+  <script src="fortune.js"></script>
+</body>
+</html>

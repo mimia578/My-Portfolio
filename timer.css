@@ -1,0 +1,43 @@
+
+.stopwatchbox{
+   margin:100px auto; 
+   background-color:rgb(255, 255, 255);
+   text-align:center;
+   border-radius: 20px;
+   padding:20px;
+   max-width: 500px;
+}
+
+.time{
+    font-size: 50px;
+    font-family: system-ui, sans-serif;
+    margin:auto;
+}
+
+button {
+    border-radius:13px;
+    padding:12px;  
+    width: 100px; 
+    transition:0.3s;
+    margin-right: 10px;
+}
+button:hover{
+    transform:scale(1.1)
+}
+.start{
+    background-color: black;
+    color: aliceblue;
+}
+
+
+.stop{
+    background-color: lightgrey;
+    color:darkgray;
+    border-color: lightgrey;
+}
+
+.reset{
+    background-color: aliceblue;
+    color:black;
+    border-color: aliceblue;
+}
