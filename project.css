@@ -1,17 +1,19 @@
+/* ========== Base Styles ========== */
+
 .projectimg {
   width: 100%;
   height: 150px;
   object-fit: cover;
   border-radius: 0;
-  transition: transform 0.3s ease;;
+  transition: transform 0.3s ease;
   border: none;
 }
 
-.projectimg:hover{
- transform: scale(1.05)
+.projectimg:hover {
+  transform: scale(1.05);
 }
 
-.projectbutton{
+.projectbutton {
   background-color: #764c47;
   border-radius: 20px;
   color: antiquewhite;
@@ -22,37 +24,27 @@
   margin: 10px auto;
   text-align: center;
   cursor: pointer;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
   transition: background-color 0.3s ease, transform 0.2s ease;
 }
-.project-box {
-  background-color: #fff;
-  padding-bottom: 20px;
-  margin: 20px auto;
-  width: 500px;
-  border-radius: 16px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
-  transition: transform 0.3s ease;
-  text-align: center;
-}
-.project-box:hover{
-  box-shadow:  0 4px 10px rgba(0, 0, 0, 0.15);
-  transform: scale(1.02)
-}
+
+.project-box,
 .project-box2 {
   background-color: #fff;
   padding-bottom: 20px;
-  margin: 20px auto;
-  width: 350px;
   border-radius: 16px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
   transition: transform 0.3s ease;
   text-align: center;
+  width: 100%;
 }
-.project-box2:hover{
-  box-shadow:  0 4px 10px rgba(0, 0, 0, 0.15);
-  transform: scale(1.02)
+
+.project-box:hover,
+.project-box2:hover {
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+  transform: scale(1.02);
 }
+
 .feature-details {
   display: none;
   margin-top: 15px;
@@ -66,11 +58,11 @@
 .feature-details ul {
   padding-left: 20px;
   line-height: 1.7;
-  }
+}
 
 .feature-details li {
   margin-bottom: 10px;
-  }
+}
 
 .toggle-btn {
   padding: 10px 20px;
@@ -90,9 +82,34 @@
 .project-container {
   margin-top: 20px;
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: repeat(3, 1fr); /* Desktop default */
   gap: 30px;
   padding: 20px;
+}
+
+
+@media (max-width: 992px) {
+  .project-container {
+    grid-template-columns: repeat(2, 1fr);
+    padding: 15px;
+  }
+}
+
+@media (max-width: 600px) {
+  .project-container {
+    grid-template-columns: 1fr;
+    padding: 10px;
+  }
+
+  .projectimg {
+    height: 130px;
+  }
+
+  .projectbutton,
+  .toggle-btn {
+    font-size: 14px;
+    padding: 8px 12px;
+  }
 }
 
 .contact-section {
@@ -102,28 +119,30 @@
   border-radius: 16px;
   margin-top: 40px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
-  
 }
-.contact-section h1{
-    font-size:x-large;  
-    margin-bottom:10px ; 
+
+.contact-section h1 {
+  font-size: x-large;
+  margin-bottom: 10px;
 }
-.contact-section h3{
+
+.contact-section h3 {
   margin-bottom: 20px;
 }
-.contact-button{ 
-    width: auto;
-    background-color: #a5724b;
-    text-align: center;
-    color: #ffe7e7;
-    border-radius: 20px;
-    padding: 10px 20px;
-    font-size: large;
-    text-decoration: none;
-    transition: transform 0.2s ease-in-out;
+
+.contact-button {
+  width: auto;
+  background-color: #a5724b;
+  text-align: center;
+  color: #ffe7e7;
+  border-radius: 20px;
+  padding: 10px 20px;
+  font-size: large;
+  text-decoration: none;
+  transition: transform 0.2s ease-in-out;
 }
 
 .contact-button:hover {
-    transform: scale(1.05);
-    background-color: #a9746e;
+  transform: scale(1.05);
+  background-color: #a9746e;
 }
