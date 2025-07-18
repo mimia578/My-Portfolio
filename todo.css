@@ -1,4 +1,4 @@
-/* Base styles */
+
 body {
   background-color: #fafff7;
   font-family: Arial, sans-serif;
@@ -6,7 +6,7 @@ body {
   padding: 0;
 }
 
-/* Container */
+
 .todo-container {
   background-color: #f0fff3;
   border-radius: 20px;
@@ -18,7 +18,7 @@ body {
   width: 90%; 
 }
 
-/* Heading */
+
 .todo-container h1 {
   font-size: 1.8rem;
   color: #1c3f0f;
@@ -26,14 +26,14 @@ body {
   margin-bottom: 10px;
 }
 
-/* Subtitle */
+
 .subtitle {
   color: rgb(133, 133, 133);
   font-size: 1.1rem;
   margin-bottom: 20px;
 }
 
-/* Input row */
+
 .input-row {
   display: flex;
   justify-content: center;
@@ -42,7 +42,6 @@ body {
   flex-wrap: wrap;
 }
 
-/* Input box */
 input[type="text"] {
   border-radius: 10px;
   padding: 10px;
@@ -63,7 +62,7 @@ input[type="text"]:focus {
   border-color: #509f68;
 }
 
-/* Add button */
+
 .addbutton {
   background-color: #20542b;
   color: white;
@@ -132,7 +131,7 @@ input[type="text"]:focus {
   border-radius: 10px;
 }
 
-/* Checkbox + completed style */
+
 .checkbox-label {
   display: flex;
   align-items: center;
@@ -148,4 +147,8 @@ input[type="checkbox"] {
 .task-text.completed {
   text-decoration: line-through;
   color: #999;
+}
+
+.delete{
+  text-align: right;
 }
