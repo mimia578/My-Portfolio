@@ -69,7 +69,7 @@ function attachEventListeners() {
 
 // Function to add a new task
 function addTask() {
-  const taskText = input.value.trim(); // Remove extra spaces
+  const taskText = input.value.trim(); //removes all leading and trailing whitespace.
 
   // Do nothing if the input is empty
   if (taskText === "") return;

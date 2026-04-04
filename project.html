@@ -1,121 +1,667 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="project.css">
-    <link rel="stylesheet" href="styles.css">
-    <title>Projects</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Portfolio</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&display=swap');
+*{box-sizing:border-box;margin:0;padding:0;}
+:root{
+  --ink:#1a1208;--cream:#f5ede0;--parchment:#ede0c8;--gold:#b8953a;--gold-l:#d4af5a;
+  --rust:#8b3a2a;--sepia:#6b4c2a;--muted:#8a7560;--border:#c9aa7c;--dark:#110e08;
+}
+body{background:var(--cream);font-family:'EB Garamond',Georgia,serif;color:var(--ink);overflow-x:hidden;}
+
+/* BACK BUTTON (from file 1) */
+.back-button{
+  display:inline-flex;align-items:center;gap:.5rem;
+  font-family:'Cormorant Garamond',serif;font-size:.76rem;letter-spacing:.18em;text-transform:uppercase;
+  color:var(--sepia);background:var(--parchment);border:1px solid var(--border);
+  padding:.5rem 1.2rem;border-radius:4px;text-decoration:none;
+  position:fixed;top:1.2rem;left:3rem;z-index:300;
+  transition:background .3s,color .3s,transform .2s;
+}
+.back-button:hover{background:var(--sepia);color:var(--cream);transform:translateX(-2px);}
+
+/* NAV */
+.nav{display:flex;justify-content:space-between;align-items:center;padding:1.2rem 3rem;border-bottom:1px solid var(--border);background:var(--cream);position:sticky;top:0;z-index:200;}
+.nav-logo{font-family:'Playfair Display',serif;font-size:1rem;letter-spacing:0.22em;color:var(--sepia);text-transform:uppercase;}
+.nav-links{display:flex;gap:2rem;list-style:none;}
+.nav-links a{font-family:'Cormorant Garamond',serif;font-size:0.82rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--muted);text-decoration:none;cursor:pointer;transition:color .3s;}
+.nav-links a:hover{color:var(--gold);}
+.nav-page-links{display:flex;gap:1rem;list-style:none;}
+.nav-page-links a{font-family:'Cormorant Garamond',serif;font-size:0.78rem;letter-spacing:.15em;text-transform:uppercase;color:var(--gold);text-decoration:none;padding:.3rem .8rem;border:1px solid var(--border);border-radius:4px;transition:all .3s;}
+.nav-page-links a:hover{background:var(--gold);color:var(--cream);}
+
+/* HERO */
+.hero{display:grid;grid-template-columns:55% 45%;min-height:90vh;}
+.hero-left{padding:5rem 3rem 5rem 4rem;border-right:1px solid var(--border);display:flex;flex-direction:column;justify-content:center;animation:fadeUp 1s ease both;}
+.eyebrow{font-family:'Cormorant Garamond',serif;font-size:0.78rem;letter-spacing:0.32em;text-transform:uppercase;color:var(--gold);display:flex;align-items:center;gap:1rem;margin-bottom:1.5rem;}
+.eyebrow::before{content:'';width:36px;height:1px;background:var(--gold);}
+.hero-name{font-family:'Playfair Display',serif;font-size:clamp(3rem,5.5vw,5rem);font-weight:700;line-height:1.05;margin-bottom:1.4rem;}
+.hero-name em{font-style:italic;color:var(--sepia);}
+.hero-desc{font-size:1.1rem;line-height:1.9;color:var(--muted);max-width:420px;margin-bottom:2.5rem;}
+.hero-btns{display:flex;gap:1.2rem;}
+.btn-p{font-family:'Cormorant Garamond',serif;font-size:0.8rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--cream);background:var(--ink);border:none;padding:.85rem 2rem;border-radius:4px;cursor:pointer;transition:background .3s,transform .2s,box-shadow .3s;}
+.btn-p:hover{background:var(--sepia);transform:translateY(-2px);box-shadow:0 6px 20px rgba(26,18,8,.2);}
+.btn-g{font-family:'Cormorant Garamond',serif;font-size:0.8rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--gold);background:none;border:1px solid var(--border);padding:.85rem 2rem;border-radius:4px;cursor:pointer;transition:border-color .3s,color .3s,background .3s,transform .2s;}
+.btn-g:hover{border-color:var(--gold);background:rgba(184,149,58,.06);transform:translateY(-2px);}
+
+/* HERO RIGHT */
+.hero-right{padding:4rem 2.5rem;display:flex;flex-direction:column;justify-content:center;gap:1.5rem;animation:fadeUp 1s ease .2s both;}
+
+/* PROFILE PIC */
+.profile-wrap{display:flex;align-items:center;gap:1.4rem;padding:1.2rem 1.5rem;border:1px solid var(--border);background:var(--parchment);border-radius:10px;position:relative;overflow:hidden;}
+.profile-wrap::before{content:'';position:absolute;top:0;left:0;width:100%;height:3px;background:linear-gradient(90deg,var(--gold),var(--gold-l),var(--gold));}
+.profile-img-frame{width:70px;height:70px;border-radius:50%;border:2px solid var(--gold);padding:3px;flex-shrink:0;position:relative;}
+.profile-img-frame::after{content:'';position:absolute;inset:-4px;border-radius:50%;border:1px solid var(--border);}
+.profile-img{width:100%;height:100%;border-radius:50%;object-fit:cover;display:block;}
+.profile-img-ph{width:100%;height:100%;border-radius:50%;background:linear-gradient(135deg,var(--sepia),var(--gold));display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-size:1.4rem;color:var(--cream);}
+.profile-info{}
+.profile-name{font-family:'Playfair Display',serif;font-size:1.05rem;font-weight:600;color:var(--ink);margin-bottom:.2rem;}
+.profile-role{font-family:'Cormorant Garamond',serif;font-size:.74rem;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);}
+
+.stat-grid{display:grid;grid-template-columns:1fr 1fr;gap:.9rem;}
+.stat{border:1px solid var(--border);padding:1.3rem 1.2rem;background:var(--parchment);position:relative;overflow:hidden;transition:transform .3s,box-shadow .3s;border-radius:8px;cursor:default;}
+.stat::before{content:'';position:absolute;top:0;left:0;width:3px;height:100%;background:var(--gold);}
+.stat:hover{transform:translateY(-3px);box-shadow:0 8px 24px rgba(26,18,8,.1);}
+.stat-n{font-family:'Playfair Display',serif;font-size:2.4rem;font-weight:700;color:var(--ink);line-height:1;}
+.stat-l{font-family:'Cormorant Garamond',serif;font-size:0.74rem;letter-spacing:0.16em;text-transform:uppercase;color:var(--muted);margin-top:.3rem;}
+.avail{border:1px solid var(--border);padding:1.2rem 1.5rem;background:var(--parchment);border-radius:8px;}
+.avail-tag{font-family:'Cormorant Garamond',serif;font-size:0.72rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);margin-bottom:.4rem;}
+.avail-val{font-family:'Playfair Display',serif;font-size:1rem;color:var(--ink);}
+
+/* DIVIDER */
+.div{display:flex;align-items:center;gap:1.5rem;padding:0 4rem;}
+.div::before,.div::after{content:'';flex:1;height:1px;background:var(--border);}
+.div-gem{color:var(--gold);font-size:.9rem;letter-spacing:.4em;}
+
+/* SECTION */
+.sec{padding:5rem 4rem;}
+.sec-hd{text-align:center;margin-bottom:3.5rem;}
+.sec-lbl{font-family:'Cormorant Garamond',serif;font-size:.76rem;letter-spacing:.3em;text-transform:uppercase;color:var(--gold);display:flex;align-items:center;justify-content:center;gap:1.5rem;margin-bottom:.8rem;}
+.sec-lbl::before,.sec-lbl::after{content:'';width:50px;height:1px;background:var(--border);}
+.sec-title{font-family:'Playfair Display',serif;font-size:clamp(1.8rem,3.5vw,2.8rem);font-weight:700;line-height:1.2;color:var(--ink);}
+.sec-title em{color:var(--sepia);font-style:italic;}
+
+/* PROJECTS TABS */
+.proj-tabs{display:flex;gap:.6rem;justify-content:center;margin-bottom:3rem;flex-wrap:wrap;background:var(--parchment);border:1px solid var(--border);border-radius:50px;padding:.4rem;width:fit-content;margin-left:auto;margin-right:auto;}
+.tab{font-family:'Cormorant Garamond',serif;font-size:.78rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);background:none;border:none;padding:.5rem 1.4rem;border-radius:50px;cursor:pointer;transition:all .25s ease;white-space:nowrap;}
+.tab.active{color:var(--cream);background:var(--ink);}
+.tab:not(.active):hover{color:var(--sepia);background:rgba(26,18,8,.06);}
+
+/* PROJECT CARD */
+.proj-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:2rem;}
+.proj-card{background:var(--parchment);border:1px solid var(--border);border-radius:12px;overflow:hidden;transition:transform .4s,box-shadow .4s;animation:fadeUp .7s ease both;}
+.proj-card:hover{transform:translateY(-6px);box-shadow:0 16px 40px rgba(26,18,8,.13);}
+.proj-img-wrap{position:relative;overflow:hidden;height:210px;}
+.proj-img{width:100%;height:100%;object-fit:cover;filter:sepia(35%) contrast(1.05);display:block;transition:filter .4s,transform .4s;}
+.proj-card:hover .proj-img{filter:sepia(15%) contrast(1.1);transform:scale(1.04);}
+.proj-img-ph{width:100%;height:210px;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,#c8aa80,#8a6040);}
+.proj-badge{position:absolute;top:1rem;left:1rem;font-family:'Cormorant Garamond',serif;font-size:.7rem;letter-spacing:.16em;text-transform:uppercase;color:var(--cream);background:var(--ink);padding:.3rem .8rem;border-radius:4px;}
+.proj-link-btn{position:absolute;top:1rem;right:1rem;font-family:'Cormorant Garamond',serif;font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);background:rgba(26,18,8,.85);border:1px solid var(--gold);padding:.3rem .8rem;border-radius:4px;cursor:pointer;text-decoration:none;transition:background .3s,color .3s,transform .2s;}
+.proj-link-btn:hover{background:var(--gold);color:var(--ink);transform:scale(1.05);}
+.proj-body{padding:1.5rem 1.8rem 1.8rem;border-top:3px solid var(--gold);}
+.proj-stack{font-family:'Cormorant Garamond',serif;font-size:.7rem;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);margin-bottom:.5rem;}
+.proj-title{font-family:'Playfair Display',serif;font-size:1.2rem;font-weight:600;color:var(--ink);margin-bottom:.7rem;line-height:1.25;}
+.proj-desc{font-size:.9rem;line-height:1.75;color:var(--muted);margin-bottom:1.1rem;}
+
+/* FEATURES TOGGLE */
+.toggle-btn{font-family:'Cormorant Garamond',serif;font-size:.76rem;letter-spacing:.14em;text-transform:uppercase;color:var(--cream);background:var(--sepia);border:none;cursor:pointer;display:inline-flex;align-items:center;gap:.5rem;padding:.45rem 1rem;border-radius:20px;transition:background .25s,transform .15s;}
+.toggle-btn:hover{background:var(--ink);transform:translateY(-1px);}
+.toggle-btn .arrow{display:inline-block;transition:transform .3s ease;font-size:.7rem;}
+.toggle-btn.open-state .arrow{transform:rotate(180deg);}
+.feat-panel{max-height:0;overflow:hidden;transition:max-height .45s cubic-bezier(.4,0,.2,1),opacity .35s ease;opacity:0;pointer-events:none;}
+.feat-panel.open{max-height:600px;opacity:1;pointer-events:auto;}
+.feat-panel-inner{margin-top:.9rem;padding:.9rem 1rem;border:1px solid var(--border);border-radius:8px;background:rgba(245,237,224,.6);list-style:none;}
+.feat-panel-inner li{font-size:.86rem;color:var(--sepia);padding:.28rem 0 .28rem 1.2rem;position:relative;line-height:1.5;}
+.feat-panel-inner li::before{content:'◆';font-size:.4rem;position:absolute;left:0;top:.52rem;color:var(--gold);}
+
+/* SKILLS */
+.skills-sec{padding:5rem 4rem;background:var(--parchment);border-top:1px solid var(--border);border-bottom:1px solid var(--border);}
+.skills-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:1.2rem;margin-top:3rem;}
+.skill{text-align:center;padding:1.8rem .8rem;border:1px solid var(--border);border-radius:10px;background:var(--cream);transition:transform .3s,border-color .3s,box-shadow .3s;cursor:default;}
+.skill:hover{transform:translateY(-4px);border-color:var(--gold);box-shadow:0 8px 24px rgba(184,149,58,.12);}
+.skill-ic{font-size:1.5rem;margin-bottom:.7rem;}
+.skill-nm{font-family:'Cormorant Garamond',serif;font-size:.74rem;letter-spacing:.15em;text-transform:uppercase;color:var(--sepia);}
+
+/* TIMELINE */
+.tl-sec{padding:5rem 4rem;}
+.tl{display:flex;flex-direction:column;gap:0;margin-top:3rem;position:relative;}
+.tl::before{content:'';position:absolute;left:50%;top:0;bottom:0;width:1px;background:var(--border);}
+.tl-item{display:grid;grid-template-columns:1fr 1fr;gap:3rem;position:relative;margin-bottom:3rem;}
+.tl-item:nth-child(odd) .tl-content{grid-column:1;text-align:right;padding-right:2.5rem;}
+.tl-item:nth-child(even) .tl-content{grid-column:2;text-align:left;padding-left:2.5rem;}
+.tl-dot{position:absolute;left:50%;top:1rem;transform:translateX(-50%);width:10px;height:10px;background:var(--gold);border:2px solid var(--cream);border-radius:50%;transition:transform .3s;}
+.tl-item:hover .tl-dot{transform:translateX(-50%) scale(1.5);}
+.tl-yr{font-family:'Cormorant Garamond',serif;font-size:.72rem;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:.4rem;}
+.tl-nm{font-family:'Playfair Display',serif;font-size:1rem;font-weight:600;color:var(--ink);margin-bottom:.4rem;}
+.tl-desc{font-size:.86rem;color:var(--muted);line-height:1.6;}
+
+/* CONTACT */
+.contact-sec{padding:6rem 4rem;text-align:center;background:var(--dark);color:var(--cream);}
+.c-eyebrow{font-family:'Cormorant Garamond',serif;font-size:.76rem;letter-spacing:.3em;text-transform:uppercase;color:var(--gold-l);display:flex;align-items:center;justify-content:center;gap:1.5rem;margin-bottom:1.5rem;}
+.c-eyebrow::before,.c-eyebrow::after{content:'';width:50px;height:1px;background:var(--gold);}
+.c-title{font-family:'Playfair Display',serif;font-size:clamp(2rem,4vw,3.2rem);font-weight:700;line-height:1.15;margin-bottom:1rem;}
+.c-title em{color:var(--gold-l);font-style:italic;}
+.c-sub{font-size:1rem;color:rgba(245,237,224,.6);max-width:480px;margin:0 auto 2.5rem;line-height:1.85;}
+.c-links{display:flex;justify-content:center;gap:1.2rem;flex-wrap:wrap;}
+.c-link{font-family:'Cormorant Garamond',serif;font-size:.78rem;letter-spacing:.16em;text-transform:uppercase;padding:.9rem 2.2rem;border:1px solid var(--gold);border-radius:6px;color:var(--gold-l);cursor:pointer;background:none;text-decoration:none;transition:background .3s,color .3s,transform .2s,box-shadow .3s;}
+.c-link:hover{background:var(--gold);color:var(--ink);transform:translateY(-2px);box-shadow:0 6px 20px rgba(184,149,58,.3);}
+
+/* FOOTER */
+footer{padding:1.8rem 4rem;display:flex;justify-content:space-between;align-items:center;border-top:1px solid var(--border);background:var(--cream);}
+.ft{font-family:'Cormorant Garamond',serif;font-size:.76rem;letter-spacing:.12em;color:var(--muted);}
+.ft a{color:var(--gold);text-decoration:none;}
+.ft a:hover{text-decoration:underline;}
+
+@keyframes fadeUp{from{opacity:0;transform:translateY(24px);}to{opacity:1;transform:translateY(0);}}
+.proj-card:nth-child(1){animation-delay:.05s;}
+.proj-card:nth-child(2){animation-delay:.15s;}
+.proj-card:nth-child(3){animation-delay:.25s;}
+.proj-card:nth-child(4){animation-delay:.35s;}
+.proj-card:nth-child(5){animation-delay:.45s;}
+.proj-card:nth-child(6){animation-delay:.55s;}
+.proj-card:nth-child(7){animation-delay:.65s;}
+</style>
 </head>
 <body>
-<header>
-    <h1>My Projects </h1> 
-    <h2>Creative Works and Projects</h2>
-    <p class="intro">A collection of my favorite projects that showcase my passion for design, development, and creating meaningful digital experiences.</p>     
-</header>
-    <h1 style="text-align:left; font-size:x-large; margin-bottom: 20px;"> Featured Projects : </h1>
-    <section class="project-container">
-        <div class="project-box">
-            <img src="https://images.pexels.com/photos/7988114/pexels-photo-7988114.jpeg" alt="Lost and Found Website" class="projectimg">
-            <h2>Lost and Found Website</h2>
-            <p class="intro">A Lost and Found platform with AI-powered auto-matching, user interaction, admin control, and gamified rewards.</p>
-            <button class="toggle-btn">Show Features</button>
-            <div class="feature-details">
-                <ul>
-                    <li>AI-powered auto-matching based on text, location, and time</li>
-                    <li>Create, edit, and delete lost/found item posts</li>
-                    <li>Attach images, descriptions, titles, and locations</li>
-                    <li>Comment, reply, and delete interactions on posts</li>
-                    <li>Bookmark and claim items through the platform</li>
-                    <li>Customizable user profiles with activity tracking</li>
-                    <li>Admin panel for reviewing, deleting, and moderating posts</li>
-                    <li>Automatic archiving of unresolved posts after 15 days</li>
-                    <li>Gamification with points, badges, and leaderboard system</li>
-                    <li>Confidence scoring and match notifications for admins and users</li>
-                </ul>
-            </div>
+
+<!-- Back to Home (from file 1) -->
+<a href="index.html" class="back-button">← Back to Home</a>
+
+<nav class="nav">
+  <div class="nav-logo">Portfolio</div>
+  <ul class="nav-links">
+    <li><a onclick="document.getElementById('projects').scrollIntoView({behavior:'smooth'})">Work</a></li>
+    <li><a onclick="document.getElementById('skills').scrollIntoView({behavior:'smooth'})">Skills</a></li>
+    <li><a onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Contact</a></li>
+  </ul>
+  <!-- Page links from file 1 -->
+  <ul class="nav-page-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="contactpage.html">Contact Page</a></li>
+  </ul>
+</nav>
+
+<section class="hero">
+  <div class="hero-left">
+    <div class="eyebrow">Developer & Designer</div>
+    <h1 class="hero-name">Building Things<br>That <em>Matter</em></h1>
+    <p class="hero-desc">Full-stack developer crafting purposeful digital experiences — from AI-powered platforms to gamified learning ecosystems and community-driven applications.</p>
+    <div class="hero-btns">
+      <button class="btn-p" onclick="document.getElementById('projects').scrollIntoView({behavior:'smooth'})">View Work</button>
+      <button class="btn-g" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Get in Touch</button>
+    </div>
+  </div>
+  <div class="hero-right">
+    <!-- Profile Picture (linked from file 1 style — replace src with your actual image) -->
+    <div class="profile-wrap">
+      <div class="profile-img-frame">
+        <!-- Replace the src below with your actual profile image path, e.g. "profile.jpg" -->
+        <img src="profile.jpg" class="profile-img" alt="Profile Picture"
+          onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+        <div class="profile-img-ph" style="display:none">✦</div>
+      </div>
+      <div class="profile-info">
+        <div class="profile-name">Your Name</div>
+        <div class="profile-role">Full-Stack Developer</div>
+      </div>
+    </div>
+
+    <div class="stat-grid">
+      <div class="stat"><div class="stat-n">7</div><div class="stat-l">Live Projects</div></div>
+      <div class="stat"><div class="stat-n">MERN</div><div class="stat-l">Stack Expert</div></div>
+      <div class="stat"><div class="stat-n">AI</div><div class="stat-l">Integration</div></div>
+      <div class="stat"><div class="stat-n">UX</div><div class="stat-l">Focused Design</div></div>
+    </div>
+    <div class="avail">
+      <div class="avail-tag">Currently open to</div>
+      <div class="avail-val">Freelance & Collaborations</div>
+    </div>
+  </div>
+</section>
+
+<div class="div"><div class="div-gem">✦ ✦ ✦</div></div>
+
+<section class="sec" id="projects">
+  <div class="sec-hd">
+    <div class="sec-lbl">Selected Work</div>
+    <h2 class="sec-title">Creative <em>Projects</em></h2>
+  </div>
+
+  <div class="proj-tabs">
+    <button class="tab active" onclick="filterProj('all',this)">All Work</button>
+    <button class="tab" onclick="filterProj('web',this)">Web Apps</button>
+    <button class="tab" onclick="filterProj('mobile',this)">Mobile</button>
+    <button class="tab" onclick="filterProj('game',this)">Gamification</button>
+    <button class="tab" onclick="filterProj('php',this)">PHP</button>
+  </div>
+
+  <div class="proj-grid" id="proj-grid">
+
+    <!-- BeadZen -->
+    <div class="proj-card" data-cat="web">
+      <div class="proj-img-wrap">
+        <img src="https://image2url.com/r2/default/images/1775059265033-110e47df-0550-43bd-ad9f-c98796dcb7ac.png" class="proj-img" alt="BeadZen" onerror="this.style.display='none';this.parentElement.querySelector('.proj-img-ph').style.display='flex'">
+        <div class="proj-img-ph" style="display:none"><svg width="48" height="48" viewBox="0 0 48 48" fill="none"><circle cx="24" cy="24" r="20" stroke="#f5ede0" stroke-width="1.5"/><circle cx="16" cy="24" r="4" fill="#f5ede0" opacity=".7"/><circle cx="24" cy="16" r="4" fill="#f5ede0" opacity=".7"/><circle cx="32" cy="24" r="4" fill="#f5ede0" opacity=".7"/><circle cx="24" cy="32" r="4" fill="#f5ede0" opacity=".7"/></svg></div>
+        <span class="proj-badge">E-Commerce</span>
+        <a class="proj-link-btn" href="https://bead-zen.vercel.app/" target="_blank">Visit ↗</a>
+      </div>
+      <div class="proj-body">
+        <div class="proj-stack">MERN Stack · AI Matching</div>
+        <h3 class="proj-title">BeadZen</h3>
+        <p class="proj-desc">A full-featured e-commerce platform for handmade beaded products — with AI recommendations, custom order chat, gamified loyalty, and a complete admin suite.</p>
+        <button class="toggle-btn" onclick="toggleFeat(this)">View Features <span class="arrow">▾</span></button>
+        <div class="feat-panel">
+          <ul class="feat-panel-inner">
+            <li>Search & filter by price, category, colour, material</li>
+            <li>Persistent cart, discount codes & points redemption</li>
+            <li>Wishlists with gifting & social sharing</li>
+            <li>Custom order chat with image sharing</li>
+            <li>Restock requests with advance order option</li>
+            <li>Star reviews (post-delivery only) & admin moderation</li>
+            <li>Real-time order tracking dashboard</li>
+            <li>Bkash & Cash on Delivery payment support</li>
+            <li>Points, medals, badges & referral programme</li>
+            <li>Seasonal events & limited-time challenges</li>
+            <li>Admin analytics, inventory & promotion management</li>
+            <li>Product zoom, multi-colour images & video support</li>
+          </ul>
         </div>
+      </div>
+    </div>
 
-        <div class="project-box">
-            <img src="https://images.pexels.com/photos/574070/pexels-photo-574070.jpeg" alt="Rental System" class="projectimg">
-            <h2>Vehicle and Garage Rental Management System</h2>
-            <p class="intro" style="margin:none;">A rental system with user profiles, owner dashboards, trip and parking tracking.</p>
-            <button class="toggle-btn">Show Features</button>
-            <div class="feature-details">
-                <ul>
-                    <li>Garage listing by verified owners with address, city, and type</li>
-                    <li>Vehicle registration with model, seat capacity, premium tag</li>
-                    <li>Trip booking with pickup/drop-off locations and time</li>
-                    <li>Parking system with booking duration, garage ID, customer type</li>
-                    <li>Admin panel for verifying owners, managing users and listings</li>
-                    <li>Analytics for cars and garages per owner</li>
-                </ul>
-            </div>
+    <!-- Play to Secure -->
+    <div class="proj-card" data-cat="web game">
+      <div class="proj-img-wrap">
+        <div class="proj-img-ph">
+          <svg width="56" height="56" viewBox="0 0 56 56" fill="none">
+            <rect x="4" y="14" width="48" height="30" rx="3" stroke="#f5ede0" stroke-width="1.5" fill="none"/>
+            <circle cx="18" cy="29" r="5" stroke="#f5ede0" stroke-width="1.5"/>
+            <path d="M34 24h8M34 29h6M34 34h8" stroke="#f5ede0" stroke-width="1.5" stroke-linecap="round"/>
+            <path d="M28 8l4 6H24l4-6z" fill="#d4af5a" opacity=".8"/>
+          </svg>
         </div>
-
-        <div class="project-box">
-            <img src="game.png" alt="Zombiefied Game" class="projectimg">
-            <h2>Zombiefied: A 2D Horror Game</h2>
-            <p class="intro">A 2D top-down zombie shooter built using OpenGL (PyOpenGL).</p>
-            <button class="toggle-btn">Show Features</button>
-            <div class="feature-details">
-                <ul>
-                    <li>Top-down shooter format with zombie AI</li>
-                    <li>Real-time movement and shooting via keyboard</li>
-                    <li>Health system, score tracker, and game-over logic</li>
-                    <li>Level design using sprite-based environments</li>
-                    <li>Lightweight and built without external engines</li>
-                </ul>
-            </div>
+        <span class="proj-badge">EdTech · Security</span>
+        <a class="proj-link-btn" href="https://play-to-secure.pages.dev/login" target="_blank">Visit ↗</a>
+      </div>
+      <div class="proj-body">
+        <div class="proj-stack">MERN Stack · Gamification</div>
+        <h3 class="proj-title">Play to Secure</h3>
+        <p class="proj-desc">A gamified cybersecurity education platform teaching secure coding through interactive attack simulations, themed levels, leaderboards, and a community wall.</p>
+        <button class="toggle-btn" onclick="toggleFeat(this)">View Features <span class="arrow">▾</span></button>
+        <div class="feat-panel">
+          <ul class="feat-panel-inner">
+            <li>7 vulnerability modules: SQLi, IDOR, XSS, NoSQL, Clickjacking, DOM Clobbering, RBAC</li>
+            <li>Map-style level progression system</li>
+            <li>Distinct themed UI per attack (comic, jungle, chess, theatre)</li>
+            <li>Interactive challenges, quizzes & guided explanations</li>
+            <li>Game leaderboard + community contribution leaderboard</li>
+            <li>Social wall with posts, comments & reactions</li>
+            <li>Mystery gift rewards unlocked at milestones</li>
+            <li>Admin: quiz management, video library, user notifications</li>
+            <li>Behaviour-based targeted encouragement from admins</li>
+          </ul>
         </div>
-    </section>
-    
-    <h1 style="text-align:left; font-size:x-large; margin-bottom: 20px;"> Smaller Projects : </h1>
-    <section class="project-container">
-        <div class="project-box2">
-          <h2 style="text-align: left; font-size: larger;margin: 10px;">Fortune Generator 🧧</h2>     
-          <p style="text-align: left; font-size: medium;margin: 10px;">Display a random fortune in a styled box on page load, with buttons to dynamically change its appearance.</p>
-          <nav> <a href="fortune.html"> View </a></nav>
+      </div>
+    </div>
 
+    <!-- UrbanFix -->
+    <div class="proj-card" data-cat="mobile">
+      <div class="proj-img-wrap">
+        <img src="https://image2url.com/r2/default/images/1775062063863-0dcb8b26-bb73-444e-a890-1e72940525db.png" class="proj-img" alt="UrbanFix" onerror="this.style.display='none';this.parentElement.querySelector('.proj-img-ph').style.display='flex'">
+        <div class="proj-img-ph" style="display:none">
+          <svg width="52" height="52" viewBox="0 0 52 52" fill="none">
+            <path d="M26 6L46 18V34L26 46L6 34V18L26 6Z" stroke="#f5ede0" stroke-width="1.5" fill="none"/>
+            <circle cx="26" cy="26" r="8" stroke="#d4af5a" stroke-width="1.5" fill="none"/>
+            <path d="M26 18V26L31 31" stroke="#f5ede0" stroke-width="1.5" stroke-linecap="round"/>
+          </svg>
         </div>
-        <div class="project-box2">
-          <h2 style="text-align: left; font-size: larger;margin: 10px;">ToDo List</h2>
-          <p style="text-align: left; font-size: medium;margin: 10px;">Interactive To-Do List web app that lets users add, check off, and delete tasks while tracking progress with a visual progress bar </p>
-          <nav> <a href="todo.html" > View </a></nav>
+        <span class="proj-badge">Mobile · Civic Tech</span>
+      </div>
+      <div class="proj-body">
+        <div class="proj-stack">React Native · MongoDB · Expo</div>
+        <h3 class="proj-title">UrbanFix</h3>
+        <p class="proj-desc">A community safety & media platform enabling citizens to report emergencies, engage in local discussions, and coordinate civic action — with one-tap SOS alerts.</p>
+        <button class="toggle-btn" onclick="toggleFeat(this)">View Features <span class="arrow">▾</span></button>
+        <div class="feat-panel">
+          <ul class="feat-panel-inner">
+            <li>OTP-based authentication & NID verification badges</li>
+            <li>One-tap panic button with camera, mic & location sharing</li>
+            <li>Dedicated police, fire & ambulance quick-call buttons</li>
+            <li>Offline-capable crime & disaster reporting with media</li>
+            <li>Real-time nearby emergency feed with community response</li>
+            <li>Reddit-style boards: Reports, Events, Polls, Donations, Volunteer</li>
+            <li>Contributor leaderboard by area (daily/weekly/monthly)</li>
+            <li>Admin dashboard, content moderation & push announcements</li>
+            <li>Support ticketing system between users and admins</li>
+          </ul>
         </div>
-        <div class="project-box2">
-          <h2 style="text-align: left; font-size: larger;margin: 10px;"> Stopwatch ⏱️</h2>
-          <p style="text-align: left; font-size: medium;margin: 10px;"> Build a stopwatch that counts in 3-second intervals, stops at 30 seconds, and includes start, stop, and reset controls.</p>
-          <nav> <a href="timer.html" > View </a></nav>
-        </div> 
+      </div>
+    </div>
 
-    </section>
-    <section class="contact-section">
-        <h1 style="color:#714b46; margin-bottom:20px;">Like what you see?</h1>
-        <h3 style="margin-bottom: 20px; color:#764c47">
-        I'm always excited to work on new projects and collaborate with amazing people.
-        Let's create something beautiful together!
-        </h3>
-
-        <div style="margin-top: 20px;">
-        <nav> 
-            <a href="contact.html" >Get in Touch</a> |
-            <a href="index.html" >Back to Home</a>
-        </nav>
+    <!-- Lost & Found -->
+    <div class="proj-card" data-cat="web game">
+      <div class="proj-img-wrap">
+        <img src="https://images.pexels.com/photos/7988114/pexels-photo-7988114.jpeg" class="proj-img" alt="Lost and Found" onerror="this.style.display='none';this.parentElement.querySelector('.proj-img-ph').style.display='flex'">
+        <div class="proj-img-ph" style="display:none">
+          <svg width="52" height="52" viewBox="0 0 52 52" fill="none">
+            <circle cx="26" cy="22" r="10" stroke="#f5ede0" stroke-width="1.5" fill="none"/>
+            <path d="M26 32v10M32 26l8 8" stroke="#d4af5a" stroke-width="1.5" stroke-linecap="round"/>
+          </svg>
         </div>
+        <span class="proj-badge">AI · Community</span>
+      </div>
+      <div class="proj-body">
+        <div class="proj-stack">MERN Stack · AI Matching</div>
+        <h3 class="proj-title">Lost & Found Platform</h3>
+        <p class="proj-desc">An AI-powered lost & found system with confidence-scored auto-matching, admin oversight, gamified rewards, and full post lifecycle management.</p>
+        <button class="toggle-btn" onclick="toggleFeat(this)">View Features <span class="arrow">▾</span></button>
+        <div class="feat-panel">
+          <ul class="feat-panel-inner">
+            <li>AI auto-matching by text, location & timestamp</li>
+            <li>Confidence score with admin match review & dual-post commenting</li>
+            <li>Create, edit, delete posts with images & location</li>
+            <li>Comments, replies, bookmarks & item claiming</li>
+            <li>Auto-archive after 15 days of unresolved status</li>
+            <li>Full post edit & deletion history for admins</li>
+            <li>Points, badges & top-3 leaderboard (gold/silver/bronze)</li>
+            <li>Admin ban/delete users, moderate reports & comments</li>
+          </ul>
+        </div>
+      </div>
+    </div>
 
-    </section>
-    <script>
-        const buttons = document.querySelectorAll(".toggle-btn");
+    <!-- Vehicle & Garage Rental (from file 1) -->
+    <div class="proj-card" data-cat="web">
+      <div class="proj-img-wrap">
+        <img src="https://images.pexels.com/photos/574070/pexels-photo-574070.jpeg" class="proj-img" alt="Rental System" onerror="this.style.display='none';this.parentElement.querySelector('.proj-img-ph').style.display='flex'">
+        <div class="proj-img-ph" style="display:none">
+          <svg width="52" height="52" viewBox="0 0 52 52" fill="none">
+            <rect x="6" y="18" width="40" height="22" rx="4" stroke="#f5ede0" stroke-width="1.5" fill="none"/>
+            <circle cx="16" cy="40" r="4" stroke="#d4af5a" stroke-width="1.5"/>
+            <circle cx="36" cy="40" r="4" stroke="#d4af5a" stroke-width="1.5"/>
+            <path d="M6 28h40" stroke="#f5ede0" stroke-width="1" opacity=".5"/>
+          </svg>
+        </div>
+        <span class="proj-badge">Management System</span>
+      </div>
+      <div class="proj-body">
+        <div class="proj-stack">Full Stack · Analytics</div>
+        <h3 class="proj-title">Vehicle & Garage Rental System</h3>
+        <p class="proj-desc">A rental management system with user profiles, owner dashboards, trip and parking tracking, and admin analytics.</p>
+        <button class="toggle-btn" onclick="toggleFeat(this)">View Features <span class="arrow">▾</span></button>
+        <div class="feat-panel">
+          <ul class="feat-panel-inner">
+            <li>Garage listing by verified owners with address, city, and type</li>
+            <li>Vehicle registration with model, seat capacity, premium tag</li>
+            <li>Trip booking with pickup/drop-off locations and time</li>
+            <li>Parking system with booking duration, garage ID, customer type</li>
+            <li>Admin panel for verifying owners, managing users and listings</li>
+            <li>Analytics for cars and garages per owner</li>
+          </ul>
+        </div>
+      </div>
+    </div>
 
-        buttons.forEach(btn => {
-            btn.addEventListener("click", () => {
-                const details = btn.nextElementSibling;
-                const isVisible = details.style.display === "block";
-                details.style.display = isVisible ? "none" : "block";
-                btn.textContent = isVisible ? "Show Features" : "Hide Features";
-            });
-        });
-    </script>
+    <!-- Vet Clinic -->
+    <div class="proj-card" data-cat="web">
+      <div class="proj-img-wrap">
+        <div class="proj-img-ph" style="background:linear-gradient(135deg,#7a9e7e,#4a6741);">
+          <svg width="56" height="56" viewBox="0 0 56 56" fill="none">
+            <path d="M28 10C28 10 16 16 16 26C16 32 20 36 28 40C36 36 40 32 40 26C40 16 28 10 28 10Z" stroke="#f5ede0" stroke-width="1.5" fill="none"/>
+            <path d="M22 26h12M28 20v12" stroke="#d4af5a" stroke-width="2" stroke-linecap="round"/>
+            <circle cx="20" cy="16" r="4" stroke="#f5ede0" stroke-width="1" fill="none" opacity=".6"/>
+            <circle cx="36" cy="16" r="4" stroke="#f5ede0" stroke-width="1" fill="none" opacity=".6"/>
+          </svg>
+        </div>
+        <span class="proj-badge">Healthcare · SaaS</span>
+      </div>
+      <div class="proj-body">
+        <div class="proj-stack">Full Stack · Multi-Role Dashboard</div>
+        <h3 class="proj-title">Vet Clinic Management System</h3>
+        <p class="proj-desc">A comprehensive veterinary clinic platform with role-based dashboards for Admins, Vets, and Pet Owners — handling appointments, medical records, billing, and a pet products shop.</p>
+        <button class="toggle-btn" onclick="toggleFeat(this)">View Features <span class="arrow">▾</span></button>
+        <div class="feat-panel">
+          <ul class="feat-panel-inner">
+            <li>Secure login with separate dashboards for Admin, Vet, and Pet Owner</li>
+            <li>Pet Owners can add/edit pets, link to owners, and store allergy or breed details</li>
+            <li>Appointment requests by owners; Vets can approve, reschedule, or view in a calendar</li>
+            <li>Vets record diagnoses, treatments, prescriptions, and full pet history</li>
+            <li>Billing & invoicing system per appointment and treatment</li>
+            <li>Admin can view total appointments, revenue, and pet stats</li>
+            <li>Vets set availability; conflict detection prevents double-booking</li>
+            <li>Integrated pet products shop within the platform</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- Zombiefied -->
+    <div class="proj-card" data-cat="game">
+      <div class="proj-img-wrap">
+        <!-- Uses game.png from file 1 -->
+        <img src="game.png" class="proj-img" alt="Zombiefied Game" onerror="this.style.display='none';this.parentElement.querySelector('.proj-img-ph').style.display='flex'">
+        <div class="proj-img-ph" style="display:none;background:linear-gradient(135deg,#1a2e1a,#0d1a0d);">
+          <svg width="56" height="56" viewBox="0 0 56 56" fill="none">
+            <circle cx="28" cy="24" r="12" stroke="#4dff4d" stroke-width="1.5" fill="none" opacity=".8"/>
+            <path d="M22 22h3v3h-3zM31 22h3v3h-3z" fill="#4dff4d" opacity=".9"/>
+            <path d="M22 30c2 2 10 2 12 0" stroke="#4dff4d" stroke-width="1.5" stroke-linecap="round"/>
+            <path d="M14 42l6-8h16l6 8" stroke="#8b0000" stroke-width="1.5" stroke-linecap="round" opacity=".7"/>
+            <circle cx="10" cy="38" r="3" fill="#8b0000" opacity=".5"/>
+            <circle cx="46" cy="36" r="3" fill="#8b0000" opacity=".5"/>
+          </svg>
+        </div>
+        <span class="proj-badge">8-Bit · OpenGL</span>
+      </div>
+      <div class="proj-body">
+        <div class="proj-stack">OpenGL · PyOpenGL · Pixel Art</div>
+        <h3 class="proj-title">Zombiefied: 8-Bit Survivor</h3>
+        <p class="proj-desc">An 8-bit survival horror game built using OpenGL with individual pixel rendering — the player is relentlessly pursued by zombie AI in a top-down 2D environment.</p>
+        <button class="toggle-btn" onclick="toggleFeat(this)">View Features <span class="arrow">▾</span></button>
+        <div class="feat-panel">
+          <ul class="feat-panel-inner">
+            <li>Built entirely with OpenGL using only individual pixels — no sprites or engines</li>
+            <li>Top-down 2D survival horror/action format</li>
+            <li>Zombie AI continuously chases and rotates to face the player</li>
+            <li>Dynamic blood splatter effects triggered when zombies take damage</li>
+            <li>Smooth zombie movement at fixed speed for fluid gameplay</li>
+            <li>Real-time keyboard movement and shooting mechanics</li>
+            <li>Health system, score tracker, and game-over logic</li>
+            <li>Level design using sprite-based pixel environments</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mechanic Service -->
+    <div class="proj-card" data-cat="web php">
+      <div class="proj-img-wrap">
+        <div class="proj-img-ph" style="background:linear-gradient(135deg,#2e2010,#5a3a10);">
+          <svg width="56" height="56" viewBox="0 0 56 56" fill="none">
+            <path d="M18 38L12 44L14 46L20 40" stroke="#f5ede0" stroke-width="2" stroke-linecap="round"/>
+            <circle cx="32" cy="24" r="12" stroke="#d4af5a" stroke-width="1.5" fill="none"/>
+            <path d="M26 18l12 12M38 18L26 30" stroke="#f5ede0" stroke-width="1.5" stroke-linecap="round" opacity=".5"/>
+            <path d="M20 14l4 4-2 2-4-4" fill="#d4af5a" opacity=".7"/>
+          </svg>
+        </div>
+        <span class="proj-badge">PHP · Service</span>
+      </div>
+      <div class="proj-body">
+        <div class="proj-stack">PHP · MySQL · Web</div>
+        <h3 class="proj-title">Mechanic Service Provider</h3>
+        <p class="proj-desc">A PHP-based mechanic service platform connecting customers with service providers — built with core PHP for booking, management, and service tracking.</p>
+        <button class="toggle-btn" onclick="toggleFeat(this)">View Features <span class="arrow">▾</span></button>
+        <div class="feat-panel">
+          <ul class="feat-panel-inner">
+            <li>Service booking and management built in PHP</li>
+            <li>Customer and mechanic role separation</li>
+            <li>Service request tracking and status updates</li>
+            <li>PHP-powered backend with MySQL data persistence</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<div class="div"><div class="div-gem">✦ ✦ ✦</div></div>
+
+<section class="skills-sec" id="skills">
+  <div class="sec-hd">
+    <div class="sec-lbl">Expertise</div>
+    <h2 class="sec-title">Areas of <em>Craft</em></h2>
+  </div>
+  <div class="skills-grid">
+    <div class="skill"><div class="skill-ic">⚛</div><div class="skill-nm">React.js</div></div>
+    <div class="skill"><div class="skill-ic">◈</div><div class="skill-nm">Node.js</div></div>
+    <div class="skill"><div class="skill-ic">▣</div><div class="skill-nm">MongoDB</div></div>
+    <div class="skill"><div class="skill-ic">◉</div><div class="skill-nm">Express.js</div></div>
+    <div class="skill"><div class="skill-ic">📱</div><div class="skill-nm">React Native</div></div>
+    <div class="skill"><div class="skill-ic">✦</div><div class="skill-nm">AI Integration</div></div>
+    <div class="skill"><div class="skill-ic">◬</div><div class="skill-nm">System Design</div></div>
+    <div class="skill"><div class="skill-ic">◊</div><div class="skill-nm">UX & Interaction</div></div>
+    <div class="skill"><div class="skill-ic">❖</div><div class="skill-nm">Gamification</div></div>
+    <div class="skill"><div class="skill-ic">⚙</div><div class="skill-nm">PHP & MySQL</div></div>
+    <div class="skill"><div class="skill-ic">🎮</div><div class="skill-nm">OpenGL / PyOpenGL</div></div>
+    <div class="skill"><div class="skill-ic">◼</div><div class="skill-nm">Admin & Analytics</div></div>
+    <div class="skill"><div class="skill-ic">🐍</div><div class="skill-nm">Python</div></div>
+    <div class="skill"><div class="skill-ic">🗃</div><div class="skill-nm">SQL</div></div>
+    <div class="skill"><div class="skill-ic">🖥</div><div class="skill-nm">Assembly</div></div>
+    <div class="skill"><div class="skill-ic">🔒</div><div class="skill-nm">Cybersecurity</div></div>
+    <div class="skill"><div class="skill-ic">🏗</div><div class="skill-nm">VLSI Design</div></div>
+    <div class="skill"><div class="skill-ic">📡</div><div class="skill-nm">REST APIs</div></div>
+    <div class="skill"><div class="skill-ic">🔁</div><div class="skill-nm">Git & GitHub</div></div>
+    <div class="skill"><div class="skill-ic">🎨</div><div class="skill-nm">UI Design</div></div>
+    </div>
+</section>
+
+<div class="div"><div class="div-gem">✦ ✦ ✦</div></div>
+
+<section class="tl-sec">
+  <div class="sec-hd">
+    <div class="sec-lbl">The Journey</div>
+    <h2 class="sec-title">Project <em>Timeline</em></h2>
+  </div>
+  <div class="tl">
+    <div class="tl-item">
+      <div class="tl-content" style="grid-column:1;text-align:right;padding-right:2.5rem;">
+        <div class="tl-yr">Project I</div>
+        <div class="tl-nm">Lost & Found Platform</div>
+        <div class="tl-desc">AI-driven community platform with confidence-scored matching and gamified contributions.</div>
+      </div>
+      <div class="tl-dot"></div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-content" style="grid-column:2;text-align:left;padding-left:2.5rem;">
+        <div class="tl-yr">Project II</div>
+        <div class="tl-nm">BeadZen</div>
+        <div class="tl-desc">Full e-commerce suite for handmade goods with custom orders, loyalty rewards & admin analytics.</div>
+      </div>
+      <div class="tl-dot"></div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-content" style="grid-column:1;text-align:right;padding-right:2.5rem;">
+        <div class="tl-yr">Project III</div>
+        <div class="tl-nm">UrbanFix</div>
+        <div class="tl-desc">Civic safety mobile app with real-time emergency response and community engagement tools.</div>
+      </div>
+      <div class="tl-dot"></div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-content" style="grid-column:2;text-align:left;padding-left:2.5rem;">
+        <div class="tl-yr">Project IV</div>
+        <div class="tl-nm">Play to Secure</div>
+        <div class="tl-desc">Gamified cybersecurity education with 7 attack modules, themed levels and a social learning community.</div>
+      </div>
+      <div class="tl-dot"></div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-content" style="grid-column:1;text-align:right;padding-right:2.5rem;">
+        <div class="tl-yr">Project V</div>
+        <div class="tl-nm">Vehicle & Garage Rental System</div>
+        <div class="tl-desc">Rental management with owner dashboards, trip tracking, parking system, and analytics.</div>
+      </div>
+      <div class="tl-dot"></div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-content" style="grid-column:2;text-align:left;padding-left:2.5rem;">
+        <div class="tl-yr">Project VI</div>
+        <div class="tl-nm">Vet Clinic System</div>
+        <div class="tl-desc">Multi-role veterinary platform with appointment calendars, medical records, billing, and a pet shop.</div>
+      </div>
+      <div class="tl-dot"></div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-content" style="grid-column:1;text-align:right;padding-right:2.5rem;">
+        <div class="tl-yr">Project VII</div>
+        <div class="tl-nm">Zombiefied</div>
+        <div class="tl-desc">8-bit survival horror game built from individual pixels using OpenGL, featuring zombie AI and dynamic effects.</div>
+      </div>
+      <div class="tl-dot"></div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-content" style="grid-column:2;text-align:left;padding-left:2.5rem;">
+        <div class="tl-yr">Project VIII</div>
+        <div class="tl-nm">Mechanic Service Provider</div>
+        <div class="tl-desc">PHP-powered service booking platform connecting customers with mechanics for seamless service management.</div>
+      </div>
+      <div class="tl-dot"></div>
+    </div>
+  </div>
+</section>
+
+<section class="contact-sec" id="contact">
+  <div class="c-eyebrow">Let's Collaborate</div>
+  <h2 class="c-title">Like What<br>You <em>See?</em></h2>
+  <p class="c-sub">Always excited to work on meaningful projects and collaborate with remarkable people. Let's create something beautiful together.</p>
+  <div class="c-links">
+    <!-- Links from file 1 -->
+    <a class="c-link" href="contactpage.html">Get in Touch</a>
+    <a class="c-link" href="https://bead-zen.vercel.app/" target="_blank">View BeadZen ↗</a>
+    <a class="c-link" href="https://play-to-secure.pages.dev/login" target="_blank">View Play to Secure ↗</a>
+    <a class="c-link" href="index.html">Back to Home</a>
+  </div>
+</section>
+
+<footer>
+  <div class="ft">Crafted with care · 2025</div>
+  <div class="ft">
+    <a href="index.html">Home</a> &nbsp;·&nbsp;
+    <a href="contactpage.html">Contact</a>
+  </div>
+  <div class="ft">All work is original</div>
+</footer>
+
+<script>
+function toggleFeat(btn) {
+  const panel = btn.nextElementSibling;
+  const isOpen = panel.classList.contains('open');
+  panel.classList.toggle('open', !isOpen);
+  btn.classList.toggle('open-state', !isOpen);
+  btn.firstChild.textContent = !isOpen ? 'Hide Features ' : 'View Features ';
+}
+
+function filterProj(cat, tabEl) {
+  document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+  tabEl.classList.add('active');
+  document.querySelectorAll('.proj-card').forEach(card => {
+    const cats = card.dataset.cat || '';
+    const show = cat === 'all' || cats.split(' ').includes(cat);
+    card.style.transition = 'opacity .3s, transform .3s';
+    if (show) {
+      card.style.display = '';
+      setTimeout(() => { card.style.opacity = '1'; card.style.transform = ''; }, 10);
+    } else {
+      card.style.opacity = '0';
+      card.style.transform = 'translateY(10px)';
+      setTimeout(() => { card.style.display = 'none'; }, 300);
+    }
+  });
+}
+</script>
 </body>
 </html>

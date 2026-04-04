@@ -15,12 +15,10 @@ function updateDisplay() {
 function startTimer() {
   if (intervalId === null && time < 30) {
     intervalId = setInterval(() => {
-      time += 1;
-      if (time%3==0){
-        updateDisplay();
-      }
+      time += 3;
+      updateDisplay();
       
-
+    
       if (time >= 30) {
         stopTimer(); // Automatically stop at 30s
       }
@@ -36,9 +34,17 @@ function stopTimer() {
 
 // Reset the stopwatch
 function resetTimer() {
-  stopTimer();
   time = 0;
   updateDisplay();
+  console.log(intervalId);
+  if (intervalId!=null){
+    startTimer();
+  }
+  else{
+    stopTimer();
+  }
+  
+
 }
 
 // Attach event listeners
