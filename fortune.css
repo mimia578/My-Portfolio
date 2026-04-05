@@ -7,15 +7,16 @@ body {
  header{
   text-align: center;
   padding: 20px;
- }
+  @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;700&display=swap');
 .fortune-box {
   width: 70%;
   margin: auto;
   text-align: center;
   padding: 20px;
-  border-radius: 16px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  border: 2px solid black;
+    background: var(--parchment);
+    border: 1px solid var(--aged);
+    border-radius: 12px;
+    box-shadow: 0 4px 12px var(--shadow);
   transition: all 0.3s ease;
 }
 
@@ -46,11 +47,25 @@ button {
 
 button:hover {
   transform: scale(1.14);
+  button {
+    padding: 10px 20px;
+    font-family: 'Cormorant Garamond', serif;
+    background: var(--sepia);
+    color: var(--cream);
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background 0.3s, transform 0.2s;
+  }
   
 }
 
 .button1 {
   background-color: #e2ba69;
+  button:hover {
+    background: var(--ink);
+    transform: scale(1.05);
+  }
   color: #724622;                
   border: 2px solid #a18a3b;
   font-family: Georgia, serif;

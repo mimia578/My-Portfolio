@@ -1,7 +1,7 @@
 
 .stopwatchbox{
    margin:100px auto; 
-   background-color:rgb(255, 255, 255);
+    background: #ede4d0;
    text-align:center;
    border-radius: 20px;
    padding:20px;
@@ -10,7 +10,7 @@
 
 .time{
     font-size: 50px;
-    font-family: system-ui, sans-serif;
+        font-family: 'Playfair Display', serif;
     margin:auto;
 }
 

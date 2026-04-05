@@ -1,3 +1,32 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=IM+Fell+English:ital@0;1&display=swap');
+
+:root {
+    --cream: #f5f0e8;
+    --parchment: #ede4d0;
+    --aged: #d4c5a9;
+    --sepia: #8b6f47;
+    --ink: #2c1f0e;
+    --gold: #b8900c;
+    --rust: #7a3b2e;
+    --sage: #6b7c5c;
+    --shadow: rgba(44,31,14,0.15);
+}
+
+* {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+}
+
+body {
+        background: var(--cream);
+        color: var(--ink);
+        font-family: 'Cormorant Garamond', serif;
+        overflow-x: hidden;
+}
+ 
+/* Existing styles continue here */
+ 
 
 * {
     margin: 0;
