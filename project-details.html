@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Project Details — Mimia Mozammel</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0;}
+:root{
+  --cream:#F5EDD8;--sand:#EDE3C8;--warm:#C9A87C;
+  --brown:#5C3D2E;--brown-l:#9A7B6A;--brown-d:#3D2219;
+  --accent:#C97B5A;--accent-l:#E8C4B8;
+}
+body{background:var(--cream);font-family:'Manrope',sans-serif;color:var(--brown-d);overflow-x:hidden;}
+
+nav{display:flex;justify-content:space-between;align-items:center;padding:16px 28px;background:var(--cream);border-bottom:1px solid rgba(180,140,100,.2);position:sticky;top:0;z-index:10;}
+.nav-logo{display:flex;align-items:center;gap:8px;font-weight:800;font-size:18px;color:var(--brown-d);}
+.nav-links{display:flex;gap:6px;align-items:center;}
+.nav-links a{font-size:16px;font-weight:700;color:var(--brown-l);text-decoration:none;padding:8px 16px;border-radius:20px;transition:all .2s;}
+.nav-links a:hover{background:var(--sand);}
+.nav-cta{background:var(--brown-d);color:var(--cream) !important;}
+.nav-cta:hover{background:var(--accent);}
+
+.page{max-width:1100px;margin:0 auto;padding:30px 28px 56px;}
+.breadcrumb{font-size:14px;font-weight:700;color:var(--brown-l);margin-bottom:12px;}
+.breadcrumb a{color:var(--brown);text-decoration:none;border-bottom:1px dashed rgba(92,61,46,.35);}
+
+.hero{display:grid;grid-template-columns:1.2fr .8fr;gap:18px;align-items:stretch;margin-bottom:18px;}
+.hero-main{background:var(--sand);border:1.5px solid rgba(180,140,100,.28);border-radius:18px;overflow:hidden;position:relative;min-height:280px;}
+.hero-main img{width:100%;height:100%;object-fit:cover;display:block;}
+.hero-fallback{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:linear-gradient(140deg,#c9a87c,#9a7b6a);font-size:54px;color:#fff;}
+.hero-side{display:grid;gap:18px;}
+.side-card{background:var(--sand);border:1.5px solid rgba(180,140,100,.28);border-radius:18px;padding:18px;}
+.side-label{font-size:12px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--accent);margin-bottom:8px;}
+.side-text{font-size:15px;line-height:1.7;color:var(--brown-l);}
+
+.title-wrap{margin-top:18px;margin-bottom:14px;}
+.stack{font-size:13px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--accent);margin-bottom:8px;}
+h1{font-family:'Playfair Display',serif;font-size:clamp(40px,6vw,56px);line-height:1.05;color:var(--brown-d);margin-bottom:10px;}
+.subtitle{font-size:18px;line-height:1.8;color:var(--brown-l);max-width:860px;}
+
+.action-row{display:flex;flex-wrap:wrap;gap:10px;margin:18px 0 26px;}
+.btn{display:inline-flex;align-items:center;gap:6px;padding:10px 16px;border-radius:22px;font-size:14px;font-weight:700;text-decoration:none;border:1.5px solid transparent;transition:all .22s;}
+.btn-dark{background:var(--brown-d);color:var(--cream);}
+.btn-dark:hover{background:var(--accent);}
+.btn-outline{background:transparent;color:var(--brown-d);border-color:rgba(180,140,100,.4);}
+.btn-outline:hover{background:var(--sand);}
+
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:24px;}
+.panel{background:var(--sand);border:1.5px solid rgba(180,140,100,.28);border-radius:16px;padding:18px;}
+.panel h2{font-family:'Playfair Display',serif;font-size:28px;margin-bottom:10px;}
+.panel p{font-size:15px;line-height:1.75;color:var(--brown-l);}
+.feature-list{list-style:none;}
+.feature-list li{font-size:15px;line-height:1.65;color:var(--brown-d);padding:5px 0 5px 16px;position:relative;border-bottom:1px solid rgba(180,140,100,.18);}
+.feature-list li:last-child{border-bottom:none;}
+.feature-list li::before{content:'◆';font-size:7px;color:var(--accent);position:absolute;left:0;top:12px;}
+
+.gallery-wrap{margin-top:10px;}
+.gallery-head{display:flex;justify-content:space-between;align-items:flex-end;gap:10px;}
+.gallery-head h2{font-family:'Playfair Display',serif;font-size:32px;}
+.gallery-head p{font-size:15px;color:var(--brown-l);}
+.gallery{margin-top:12px;display:grid;grid-template-columns:repeat(3,1fr);gap:12px;}
+.shot{background:var(--sand);border-radius:14px;overflow:hidden;border:1.5px solid rgba(180,140,100,.28);min-height:170px;position:relative;}
+.shot img{width:100%;height:100%;object-fit:cover;display:block;}
+.shot .ph{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:linear-gradient(140deg,#8f6d54,#5c3d2e);font-size:36px;color:#fff;}
+.shot-label{position:absolute;left:10px;bottom:10px;background:rgba(61,34,25,.8);color:var(--cream);font-size:12px;font-weight:700;padding:4px 8px;border-radius:10px;}
+
+.zoomable{cursor:zoom-in;}
+
+.zoom-modal{position:fixed;inset:0;display:none;align-items:center;justify-content:center;background:rgba(30,19,14,.88);z-index:999;backdrop-filter:blur(2px);padding:20px;}
+.zoom-modal.open{display:flex;}
+.zoom-modal img{max-width:min(1000px,94vw);max-height:88vh;border-radius:12px;border:2px solid rgba(245,237,216,.22);box-shadow:0 24px 60px rgba(0,0,0,.45);background:#fff;}
+.zoom-close{position:absolute;top:18px;right:18px;width:42px;height:42px;border:none;border-radius:50%;font-size:22px;line-height:1;background:rgba(245,237,216,.95);color:var(--brown-d);cursor:pointer;}
+.zoom-close:hover{background:#fff;}
+
+.footer{margin-top:34px;text-align:center;padding:20px 0;border-top:1px dashed var(--warm);}
+.footer p{font-family:'Playfair Display',serif;font-size:22px;color:var(--brown-l);}
+
+@media(max-width:900px){
+  .hero{grid-template-columns:1fr;}
+  .grid{grid-template-columns:1fr;}
+  .gallery{grid-template-columns:1fr 1fr;}
+}
+@media(max-width:767px){
+  nav{padding:14px 16px;}
+  .nav-links a{font-size:14px;padding:7px 12px;}
+  .page{padding:20px 16px 46px;}
+  h1{font-size:40px;}
+  .subtitle{font-size:16px;}
+  .gallery{grid-template-columns:1fr;}
+}
+</style>
+</head>
+<body>
+<nav>
+  <div class="nav-logo">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="#5C3D2E"><path d="M12 2l2.4 7.4H22l-6.2 4.5 2.4 7.4L12 17l-6.2 4.3 2.4-7.4L2 9.4h7.6z"/></svg>
+    Mimia Mozammel
+  </div>
+  <div class="nav-links">
+    <a href="index.html">Home</a>
+    <a href="project.html" class="nav-cta">Projects</a>
+    <a href="contactpage.html">Contact</a>
+  </div>
+</nav>
+
+<div class="page">
+  <div class="breadcrumb"><a href="project.html">Back to Projects</a></div>
+
+  <div class="hero">
+    <div class="hero-main">
+      <img id="heroImage" src="" alt="Project hero image">
+      <div id="heroFallback" class="hero-fallback" style="display:none;">📁</div>
+    </div>
+    <div class="hero-side">
+      <div class="side-card">
+        <div class="side-label">Role</div>
+        <div class="side-text" id="projectRole">Full-Stack Developer</div>
+      </div>
+      <div class="side-card">
+        <div class="side-label">Timeline</div>
+        <div class="side-text" id="projectTimeline">2025</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="title-wrap">
+    <div class="stack" id="projectStack">Project Stack</div>
+    <h1 id="projectTitle">Project Details</h1>
+    <p class="subtitle" id="projectSubtitle">This page shows project story, features, and UI snapshots.</p>
+  </div>
+
+  <div class="action-row">
+    <a id="liveLink" class="btn btn-dark" href="#" target="_blank" rel="noopener">Open Live Project</a>
+    <a class="btn btn-outline" href="project.html">View More Projects</a>
+  </div>
+
+  <div class="grid">
+    <section class="panel">
+      <h2>Overview</h2>
+      <p id="projectOverview"></p>
+    </section>
+    <section class="panel">
+      <h2>Key Features</h2>
+      <ul class="feature-list" id="featureList"></ul>
+    </section>
+  </div>
+
+  <div class="gallery-wrap">
+    <div class="gallery-head">
+      <h2>UI Gallery</h2>
+      <p>More interface snapshots and screens</p>
+    </div>
+    <div class="gallery" id="gallery"></div>
+  </div>
+
+  <div class="zoom-modal" id="zoomModal" aria-hidden="true">
+    <button class="zoom-close" id="zoomClose" aria-label="Close zoomed image">x</button>
+    <img id="zoomImage" src="" alt="Zoomed gallery image">
+  </div>
+
+  <div class="footer"><p>Made with care · Mimia Mozammel · 2025</p></div>
+</div>
+
+<script>
+const projectData = {
+  'beadzen': {
+    title: 'BeadZen',
+    stack: 'MERN · AI Matching',
+    subtitle: 'Full-featured e-commerce platform for handmade beaded products with personalization and loyalty systems.',
+    role: 'Founder · Full-Stack Developer · UI/UX Designer',
+    timeline: '2024 - Present',
+    liveUrl: 'https://bead-zen.vercel.app/',
+    hero: 'https://image2url.com/r2/default/images/1775059265033-110e47df-0550-43bd-ad9f-c98796dcb7ac.png',
+    overview: 'BeadZen combines commerce, storytelling, and customization into one polished platform. It supports personalized shopping journeys, custom order workflows, and streamlined admin management.',
+    features: [
+      'AI-based recommendations and product matching',
+      'Persistent cart with discount and loyalty point redemption',
+      'Custom order chat with image sharing',
+      'Gamified badges, medals, and referral tracking',
+      'Order tracking and admin moderation tools'
+    ],
+    gallery: [
+      { src: 'assets/beadzen1.png', label: 'Home Interface' },
+      { src: 'assets/beadzen2.png', label: 'Cart View' },
+      { src: 'assets/beadzen3.png', label: 'Admin Dashboard Page' }
+    ]
+  },
+  'play-to-secure': {
+    title: 'Play to Secure',
+    stack: 'MERN · Gamification',
+    subtitle: 'Gamified cybersecurity learning with interactive challenges, visual themes, and community-driven progress.',
+    role: 'Full-Stack Developer · Game System Designer',
+    timeline: '2025',
+    liveUrl: 'https://play-to-secure.pages.dev/login',
+    hero: 'assets/playtosecure.png',
+    overview: 'Play to Secure transforms complex security concepts into an engaging map-based learning experience. Students progress through themed modules and earn rewards while practicing offensive and defensive concepts safely.',
+    features: [
+      'Module-based learning for SQLi, XSS, IDOR, NoSQL and more',
+      'Interactive quizzes and simulation challenges',
+      'Leaderboard with rewards and gift milestones',
+      'Community wall with posts and reactions',
+      'Admin tools for quiz, media, and notification management'
+    ],
+    gallery: [
+      { src: 'assets/playtosecure4.png', label: 'Dashboard' },
+      { src: 'assets/playtosecure2.png', label: 'Challenge View' },
+      { src: 'assets/playtosecure3.png', label: 'Quiz Screen' }
+    ]
+  },
+  'urbanfix': {
+    title: 'UrbanFix',
+    stack: 'React Native · Expo · MongoDB',
+    subtitle: 'Mobile civic safety platform with emergency reporting, community channels, and local action tools.',
+    role: 'Mobile App Developer · UX Designer',
+    timeline: '2025',
+    liveUrl: '',
+    hero: 'https://image2url.com/r2/default/images/1775062063863-0dcb8b26-bb73-444e-a890-1e72940525db.png',
+    overview: 'UrbanFix helps citizens report urgent incidents, collaborate with neighbors, and reach emergency services quickly. It combines trust indicators, community interaction, and geolocation-aware reporting.',
+    features: [
+      'One-tap SOS with location, camera, and microphone',
+      'Emergency quick-call actions (police, ambulance, fire)',
+      'Community boards for reports, polls, and donations',
+      'Leaderboard for civic contribution and engagement',
+      'Admin tools for moderation and area-level announcements'
+    ],
+    gallery: [
+      { src: 'assets/urbanfix.png', label: 'Mobile Home' },
+      { src: 'assets/urbanfix3.png', label: 'Emergency Reports' },
+      { src: 'assets/urbanfix2.png', label: 'Community Feed' }
+    ]
+  },
+  'lost-and-found': {
+    title: 'Lost & Found Platform',
+    stack: 'MERN · AI Matching',
+    subtitle: 'AI-assisted item recovery platform with confidence scoring, moderation, and community interaction.',
+    role: 'Full-Stack Developer',
+    timeline: '2025',
+    liveUrl: '',
+    hero: '',
+    overview: 'This platform improves the chances of recovering lost belongings by combining AI-assisted matching with a transparent post and moderation lifecycle. Users can report, discuss, and claim items in a structured way.',
+    features: [
+      'Automatic matching by text, location, and timestamp',
+      'Confidence scoring and admin review pipeline',
+      'Comment threads, bookmarks, and claim process',
+      'Auto-archiving of unresolved cases',
+      'Gamified rewards for successful recoveries'
+    ],
+    gallery: [
+      { src: '', label: 'Listing Screen' },
+      { src: '', label: 'Match Suggestions' },
+      { src: '', label: 'Admin Review' }
+    ]
+  },
+  'zombiefied': {
+    title: 'Zombiefied',
+    stack: 'OpenGL · PyOpenGL · Pixel Art',
+    subtitle: 'Top-down 8-bit survival horror game with custom-rendered visuals and enemy behavior systems.',
+    role: 'Game Developer',
+    timeline: '2024',
+    liveUrl: '',
+    hero: 'game.png',
+    overview: 'Zombiefied is a custom-rendered pixel game built with OpenGL primitives. It focuses on arcade-style pressure, responsive controls, and continuous zombie pursuit logic.',
+    features: [
+      'No external game engine or sprite sheet dependency',
+      'Pixel-by-pixel rendering approach',
+      'Dynamic zombie chasing and directional response',
+      'Blood splatter and impact feedback',
+      'Health, score, and game over loop'
+    ],
+    gallery: [
+      { src: 'game.png', label: 'Gameplay Scene' },
+      { src: 'game.png', label: 'Enemy Encounter' },
+      { src: 'game.png', label: 'Scoring View' }
+    ]
+  },
+  'mechanic-service': {
+    title: 'Mechanic Service',
+    stack: 'PHP · MySQL',
+    subtitle: 'Service-booking web platform connecting customers with mechanics through structured workflows.',
+    role: 'Backend Developer · UI Developer',
+    timeline: '2024',
+    liveUrl: '',
+    hero: '',
+    overview: 'Mechanic Service provides a practical booking and request-management flow in core PHP. It supports role-based actions, request tracking, and reliable MySQL-backed persistence.',
+    features: [
+      'Customer and mechanic role separation',
+      'Booking request creation and status management',
+      'Service timeline tracking',
+      'CRUD workflows in PHP with MySQL',
+      'Simple admin oversight for operations'
+    ],
+    gallery: [
+      { src: '', label: 'Dashboard' },
+      { src: '', label: 'Booking Flow' },
+      { src: '', label: 'Status Tracking' }
+    ]
+  },
+  'p2-poster': {
+    title: 'Cyber-Security Research Poster',
+    stack: 'Academic Work · Research Communication',
+    subtitle: 'Conference-oriented poster for presenting research insights in a visual and structured format. It won 7th place out of 100+ submissions.',
+    role: 'Designer Researcher',
+    timeline: '2025',
+    liveUrl: 'https://image2url.com/r2/default/images/1775394051684-44e7dcad-6874-4979-918a-e7c5d0fa49e9.png',
+    hero: 'https://image2url.com/r2/default/images/1775394051684-44e7dcad-6874-4979-918a-e7c5d0fa49e9.png',
+    overview: 'This poster condenses project context, methodology, and outcomes into a presentation-ready format. The design focuses on hierarchy, readability, and audience understanding during conference sessions. It was ranked 7th out of 100+ submissions.',
+    features: [
+      'Clear sectioning for findings and methods',
+      'Visual narrative for rapid understanding',
+      'Balanced typography and layout hierarchy',
+      'Prepared for conference and academic contexts'
+    ],
+    gallery: [
+      { src: 'https://image2url.com/r2/default/images/1775394051684-44e7dcad-6874-4979-918a-e7c5d0fa49e9.png', label: 'Presentation Slide' }
+    ]
+  },
+  'hum101-poster': {
+    title: 'Poster on Mongol Empire',
+    stack: 'Academic Work',
+    subtitle: 'Coursework poster designed for concise communication and visual clarity.',
+    role: 'Designer · Student Researcher',
+    timeline: '2025',
+    liveUrl: 'https://image2url.com/r2/default/images/1775394202294-c7abbccf-228e-4e56-a9a1-9a5670ff1e85.png',
+    hero: 'https://image2url.com/r2/default/images/1775394202294-c7abbccf-228e-4e56-a9a1-9a5670ff1e85.png',
+    overview: 'The poster project emphasizes concise storytelling and clean visual organization. It was created as part of coursework deliverables and intended for fast reader comprehension.',
+    features: [
+      'Reader-friendly visual hierarchy',
+      'Focused narrative and concise wording',
+      'Balanced color and section layout',
+      'Coursework-ready presentation quality'
+    ],
+    gallery: [
+     { src: 'https://image2url.com/r2/default/images/1775394202294-c7abbccf-228e-4e56-a9a1-9a5670ff1e85.png', label: 'Final Draft' }
+    ]
+  }
+};
+
+const params = new URLSearchParams(window.location.search);
+const id = params.get('id') || 'beadzen';
+const project = projectData[id] || projectData['beadzen'];
+
+document.getElementById('projectTitle').textContent = project.title;
+document.getElementById('projectStack').textContent = project.stack;
+document.getElementById('projectSubtitle').textContent = project.subtitle;
+document.getElementById('projectRole').textContent = project.role;
+document.getElementById('projectTimeline').textContent = project.timeline;
+document.getElementById('projectOverview').textContent = project.overview;
+
+const heroImage = document.getElementById('heroImage');
+const heroFallback = document.getElementById('heroFallback');
+if(project.hero){
+  heroImage.src = project.hero;
+  heroImage.addEventListener('error', ()=>{
+    heroImage.style.display = 'none';
+    heroFallback.style.display = 'flex';
+  }, { once:true });
+}else{
+  heroImage.style.display = 'none';
+  heroFallback.style.display = 'flex';
+}
+
+const liveLink = document.getElementById('liveLink');
+if(project.liveUrl){
+  liveLink.href = project.liveUrl;
+}else{
+  liveLink.removeAttribute('href');
+  liveLink.textContent = 'Live Demo Coming Soon';
+  liveLink.style.opacity = '.65';
+  liveLink.style.pointerEvents = 'none';
+}
+
+const featureList = document.getElementById('featureList');
+project.features.forEach(item=>{
+  const li = document.createElement('li');
+  li.textContent = item;
+  featureList.appendChild(li);
+});
+
+const zoomModal = document.getElementById('zoomModal');
+const zoomImage = document.getElementById('zoomImage');
+const zoomClose = document.getElementById('zoomClose');
+
+function openZoom(src, alt){
+  if(!src) return;
+  zoomImage.src = src;
+  zoomImage.alt = alt || 'Zoomed gallery image';
+  zoomModal.classList.add('open');
+  zoomModal.setAttribute('aria-hidden', 'false');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeZoom(){
+  zoomModal.classList.remove('open');
+  zoomModal.setAttribute('aria-hidden', 'true');
+  zoomImage.src = '';
+  document.body.style.overflow = '';
+}
+
+zoomClose.addEventListener('click', closeZoom);
+zoomModal.addEventListener('click', e=>{
+  if(e.target === zoomModal) closeZoom();
+});
+
+document.addEventListener('keydown', e=>{
+  if(e.key === 'Escape' && zoomModal.classList.contains('open')) closeZoom();
+});
+
+const gallery = document.getElementById('gallery');
+project.gallery.forEach(shot=>{
+  const card = document.createElement('div');
+  card.className = 'shot';
+
+  if(shot.src){
+    const img = document.createElement('img');
+    img.src = shot.src;
+    img.alt = `${project.title} - ${shot.label}`;
+    img.classList.add('zoomable');
+    img.setAttribute('tabindex', '0');
+    img.setAttribute('role', 'button');
+    img.setAttribute('aria-label', `Zoom image: ${shot.label}`);
+    img.addEventListener('click', ()=>openZoom(shot.src, img.alt));
+    img.addEventListener('keydown', e=>{
+      if(e.key === 'Enter' || e.key === ' '){
+        e.preventDefault();
+        openZoom(shot.src, img.alt);
+      }
+    });
+    img.addEventListener('error', ()=>{
+      img.style.display = 'none';
+      const ph = document.createElement('div');
+      ph.className = 'ph';
+      ph.textContent = '🖼️';
+      card.appendChild(ph);
+    }, { once:true });
+    card.appendChild(img);
+  } else {
+    const ph = document.createElement('div');
+    ph.className = 'ph';
+    ph.textContent = '🖼️';
+    card.appendChild(ph);
+  }
+
+  const label = document.createElement('div');
+  label.className = 'shot-label';
+  label.textContent = shot.label;
+  card.appendChild(label);
+  gallery.appendChild(card);
+});
+</script>
+</body>
+</html>

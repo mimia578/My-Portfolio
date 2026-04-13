@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Mimia Mozammel</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,400;0,600;0,700;0,800;1,400&family=Caveat:wght@600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
 <style>
 *{box-sizing:border-box;margin:0;padding:0;}
 :root{
@@ -13,13 +13,13 @@
   --brown:#5C3D2E;--brown-l:#9A7B6A;--brown-d:#3D2219;
   --accent:#C97B5A;--accent-l:#E8C4B8;--accent-d:#9B5A3A;
 }
-body{background:var(--cream);font-family:'Nunito',sans-serif;color:var(--brown-d);overflow-x:hidden;}
+body{background:var(--cream);font-family:'Manrope',sans-serif;color:var(--brown-d);overflow-x:hidden;}
 
 /* NAV */
 nav{display:flex;justify-content:space-between;align-items:center;padding:16px 28px;background:var(--cream);border-bottom:1px solid rgba(180,140,100,.2);position:sticky;top:0;z-index:10;}
-.nav-logo{display:flex;align-items:center;gap:8px;font-weight:800;font-size:17px;color:var(--brown-d);}
+.nav-logo{display:flex;align-items:center;gap:8px;font-weight:800;font-size:18px;color:var(--brown-d);}
 .nav-links{display:flex;gap:6px;align-items:center;}
-.nav-links a{font-size:15px;font-weight:700;color:var(--brown-l);text-decoration:none;padding:8px 16px;border-radius:20px;transition:all .2s;}
+.nav-links a{font-size:16px;font-weight:700;color:var(--brown-l);text-decoration:none;padding:8px 16px;border-radius:20px;transition:all .2s;}
 .nav-links a:hover{background:var(--sand);}
 .nav-cta{background:var(--brown-d) !important;color:var(--cream) !important;border-radius:20px;}
 .nav-cta:hover{background:var(--accent) !important;}
@@ -30,12 +30,12 @@ nav{display:flex;justify-content:space-between;align-items:center;padding:16px 2
 /* HERO */
 .hero{display:grid;grid-template-columns:1fr 240px;gap:36px;padding:32px 0 0;align-items:start;}
 
-.hello{font-family:'Caveat',cursive;font-size:clamp(64px,8.6vw,88px);font-weight:700;color:var(--brown-d);line-height:1;}
-.tagline{font-family:'Caveat',cursive;font-size:clamp(44px,6vw,64px);color:var(--accent);margin-bottom:18px;}
-.bio{font-size:clamp(16px,1.8vw,18px);line-height:1.75;color:var(--brown-l);margin-bottom:22px;}
+.hello{font-family:'Playfair Display',serif;font-size:clamp(68px,8.8vw,94px);font-weight:700;color:var(--brown-d);line-height:1;}
+.tagline{font-family:'Playfair Display',serif;font-size:clamp(48px,6.2vw,70px);color:var(--accent);margin-bottom:18px;}
+.bio{font-size:clamp(18px,1.9vw,20px);line-height:1.78;color:var(--brown-l);margin-bottom:22px;}
 
 .pill-row{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:22px;}
-.pill{display:inline-flex;align-items:center;gap:7px;border-radius:24px;padding:10px 20px;font-size:14px;font-weight:700;text-decoration:none;transition:all .22s;}
+.pill{display:inline-flex;align-items:center;gap:7px;border-radius:24px;padding:10px 20px;font-size:15px;font-weight:700;text-decoration:none;transition:all .22s;}
 .pill-dark{background:var(--brown-d);color:var(--cream);}
 .pill-dark:hover{background:var(--accent);transform:translateY(-2px);}
 .pill-outline{background:transparent;color:var(--brown-d);border:1.5px solid var(--warm);}
@@ -46,8 +46,8 @@ nav{display:flex;justify-content:space-between;align-items:center;padding:16px 2
 .stat-chip{background:var(--sand);border:1.5px solid var(--warm);border-radius:14px;padding:12px 18px;text-align:center;transition:all .2s;cursor:default;}
 .stat-chip:hover{background:var(--accent);border-color:var(--accent);}
 .stat-chip:hover .num,.stat-chip:hover .lbl{color:#fff;}
-.num{font-family:'Caveat',cursive;font-size:28px;font-weight:700;color:var(--brown-d);}
-.lbl{font-size:12px;font-weight:700;color:var(--brown-l);text-transform:uppercase;letter-spacing:.06em;}
+.num{font-family:'Playfair Display',serif;font-size:30px;font-weight:700;color:var(--brown-d);}
+.lbl{font-size:12.5px;font-weight:700;color:var(--brown-l);text-transform:uppercase;letter-spacing:.06em;}
 
 /* PHOTO CARD */
 .photo-card{border-radius:20px;overflow:hidden;position:relative;background:var(--brown);width:100%;max-width:230px;justify-self:center;transform-style:preserve-3d;transition:transform .28s ease;cursor:pointer;}
@@ -57,11 +57,11 @@ nav{display:flex;justify-content:space-between;align-items:center;padding:16px 2
 .dob-chip{position:absolute;top:12px;left:12px;background:rgba(245,237,216,.92);border-radius:20px;padding:5px 13px;font-size:12px;font-weight:700;color:var(--brown-d);}
 .nat-chip{position:absolute;bottom:12px;right:0;background:var(--accent);color:#fff;font-size:12px;font-weight:700;padding:6px 14px;border-radius:8px 0 0 8px;}
 .contact-bar{background:var(--brown-d);padding:15px 18px;}
-.ctitle{font-family:'Caveat',cursive;font-size:22px;font-weight:700;color:var(--accent-l);margin-bottom:5px;}
-.contact-bar span{display:block;font-size:13.5px;color:rgba(245,237,216,.75);line-height:1.9;}
+.ctitle{font-family:'Playfair Display',serif;font-size:24px;font-weight:700;color:var(--accent-l);margin-bottom:5px;}
+.contact-bar span{display:block;font-size:14.5px;color:rgba(245,237,216,.75);line-height:1.9;}
 
 /* SECTIONS */
-.sec-title{font-family:'Caveat',cursive;font-size:clamp(32px,4.8vw,40px);font-weight:700;color:var(--brown);margin-bottom:14px;}
+.sec-title{font-family:'Playfair Display',serif;font-size:clamp(36px,5vw,46px);font-weight:700;color:var(--brown);margin-bottom:14px;}
 
 .edu-section{padding:28px 0 0;}
 .skills-section{padding:24px 0 0;}
@@ -72,21 +72,21 @@ nav{display:flex;justify-content:space-between;align-items:center;padding:16px 2
 
 /* EDU */
 .edu-inner{display:grid;grid-template-columns:auto 1fr;gap:32px;align-items:start;}
-.edu-date{font-size:13px;font-weight:800;color:var(--accent);letter-spacing:.08em;text-transform:uppercase;margin-bottom:6px;}
-.edu-degree{font-size:clamp(17px,2.2vw,20px);font-weight:800;color:var(--brown-d);margin-bottom:4px;}
-.edu-uni{font-size:15px;color:var(--brown-l);margin-bottom:10px;}
+.edu-date{font-size:13.5px;font-weight:800;color:var(--accent);letter-spacing:.08em;text-transform:uppercase;margin-bottom:6px;}
+.edu-degree{font-size:clamp(19px,2.3vw,22px);font-weight:800;color:var(--brown-d);margin-bottom:4px;}
+.edu-uni{font-size:16px;color:var(--brown-l);margin-bottom:10px;}
 .edu-gpa{display:inline-flex;align-items:center;gap:6px;background:var(--accent);color:#fff;border-radius:20px;padding:6px 16px;font-size:13px;font-weight:700;}
 .cw-label{font-size:12px;font-weight:800;color:var(--brown);text-transform:uppercase;letter-spacing:.06em;margin-bottom:9px;margin-top:0;padding-top:0;}
 .tags{display:flex;flex-wrap:wrap;gap:6px;}
-.tag{background:rgba(255,255,255,.65);border:1px solid rgba(180,140,100,.25);border-radius:20px;padding:5px 13px;font-size:12.5px;font-weight:600;color:var(--brown-d);}
+.tag{background:rgba(255,255,255,.65);border:1px solid rgba(180,140,100,.25);border-radius:20px;padding:5px 13px;font-size:13.5px;font-weight:600;color:var(--brown-d);}
 
 /* SKILLS */
 .skills-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;}
 .skill-group{background:var(--sand);border-radius:16px;padding:16px 18px;border:1.5px solid rgba(180,140,100,.25);transition:all .2s;cursor:default;}
 .skill-group:hover{border-color:var(--accent);transform:translateY(-3px);}
-.sg-label{font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:.07em;margin-bottom:10px;color:var(--accent);}
+.sg-label{font-size:13px;font-weight:800;text-transform:uppercase;letter-spacing:.07em;margin-bottom:10px;color:var(--accent);}
 .skill-pills{display:flex;flex-wrap:wrap;gap:5px;}
-.skill-pill{background:rgba(255,255,255,.7);border-radius:16px;padding:4px 11px;font-size:12.5px;font-weight:600;color:var(--brown-d);}
+.skill-pill{background:rgba(255,255,255,.7);border-radius:16px;padding:5px 11px;font-size:13.5px;font-weight:600;color:var(--brown-d);}
 
 /* RECOG */
 .recog-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
@@ -94,31 +94,31 @@ nav{display:flex;justify-content:space-between;align-items:center;padding:16px 2
 .recog-card:hover{transform:translateX(4px);}
 .recog-icon{width:34px;height:34px;background:var(--accent-l);border-radius:10px;display:flex;align-items:center;justify-content:center;margin-bottom:10px;}
 .recog-icon svg{width:17px;height:17px;color:var(--accent-d);}
-.recog-title{font-size:15px;font-weight:800;color:var(--brown-d);margin-bottom:4px;}
-.recog-sub{font-size:13px;color:var(--brown-l);line-height:1.5;}
-.recog-year{font-size:11px;font-weight:700;color:var(--accent);margin-top:6px;}
+.recog-title{font-size:16px;font-weight:800;color:var(--brown-d);margin-bottom:4px;}
+.recog-sub{font-size:14px;color:var(--brown-l);line-height:1.6;}
+.recog-year{font-size:12px;font-weight:700;color:var(--accent);margin-top:6px;}
 
 /* LANG */
 .lang-item{display:flex;justify-content:space-between;align-items:center;padding:9px 0;border-bottom:1px solid rgba(180,140,100,.2);}
 .lang-item:last-child{border-bottom:none;}
-.lang-name{font-size:15px;font-weight:700;color:var(--brown-d);}
-.lang-level{font-size:13px;font-weight:700;color:var(--accent);}
+.lang-name{font-size:16px;font-weight:700;color:var(--brown-d);}
+.lang-level{font-size:14px;font-weight:700;color:var(--accent);}
 
 /* HOBBIES */
 .hobbies{display:flex;flex-wrap:wrap;gap:7px;margin-top:2px;}
-.hobby{background:rgba(255,255,255,.65);border:1px solid rgba(180,140,100,.3);border-radius:20px;padding:6px 14px;font-size:14px;font-weight:600;color:var(--brown-d);transition:all .2s;cursor:default;}
+.hobby{background:rgba(255,255,255,.65);border:1px solid rgba(180,140,100,.3);border-radius:20px;padding:6px 14px;font-size:15px;font-weight:600;color:var(--brown-d);transition:all .2s;cursor:default;}
 .hobby:hover{background:var(--accent);color:#fff;border-color:var(--accent);transform:scale(1.06);}
 
 /* ACTIVITIES */
 .act-item{display:flex;align-items:flex-start;gap:10px;padding:9px 0;border-bottom:1px solid rgba(180,140,100,.18);}
 .act-item:last-child{border-bottom:none;}
 .act-dot{width:8px;height:8px;background:var(--accent);border-radius:50%;flex-shrink:0;margin-top:5px;}
-.act-title{font-size:15px;font-weight:700;color:var(--brown-d);}
-.act-sub{font-size:13px;color:var(--brown-l);margin-top:2px;line-height:1.5;}
+.act-title{font-size:16px;font-weight:700;color:var(--brown-d);}
+.act-sub{font-size:14px;color:var(--brown-l);margin-top:2px;line-height:1.5;}
 
 /* FOOTER */
 .footer{margin-top:40px;text-align:center;padding:20px 0;border-top:1px dashed var(--warm);}
-.footer p{font-family:'Caveat',cursive;font-size:20px;color:var(--brown-l);}
+.footer p{font-family:'Playfair Display',serif;font-size:23px;color:var(--brown-l);}
 
 /* ===== MOBILE ===== */
 @media(max-width:767px){
@@ -282,7 +282,13 @@ nav{display:flex;justify-content:space-between;align-items:center;padding:16px 2
       <div class="recog-card">
         <div class="recog-icon"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M19 5h-2V3H7v2H5c-1.1 0-2 .9-2 2v1c0 2.55 1.92 4.63 4.39 4.94.63 1.5 1.98 2.63 3.61 2.96V19H7v2h10v-2h-4v-3.1c1.63-.33 2.98-1.46 3.61-2.96C19.08 12.63 21 10.55 21 8V7c0-1.1-.9-2-2-2zM5 8V7h2v3.82C5.84 10.4 5 9.3 5 8zm14 0c0 1.3-.84 2.4-2 2.82V7h2v1z"/></svg></div>
         <div class="recog-title">7th Place — BRAC University Poster Competition</div>
-        <div class="recog-sub">Ranked 7th from 100+ university-wide research submissions · Play-to-Secure</div>
+        <div class="recog-sub">Cyber-security poster ranked 7th out of 100+ university-wide submissions · Play-to-Secure</div>
+        <div class="recog-year">2025</div>
+      </div>
+      <div class="recog-card">
+        <div class="recog-icon"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L8.5 8.5 2 9.5l4.7 4.6L5.6 21 12 17.8 18.4 21l-1.1-6.9L22 9.5l-6.5-1z"/></svg></div>
+        <div class="recog-title">Merit-Based Scholarship</div>
+        <div class="recog-sub">Awarded for academic performance and consistent results during undergraduate studies.</div>
         <div class="recog-year">2025</div>
       </div>
     </div>

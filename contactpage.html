@@ -2,78 +2,46 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contact Me</title>
     <link rel="stylesheet" href="contactpage.css">
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <nav> <a href="index.html" class="back-button">Back to Home</a></nav>
-    
-    <header style="margin-top:30px"> 
-        <h1>Lets Create Together</h1>
-        <p class="contact">I'm always excited to collaborate on new projects or just chat about design, creativity, and all the beautiful things in life. Drop me a line!</p>
+    <nav class="top-nav">
+        <a href="index.html" class="back-button">Back to Home</a>
+    </nav>
+
+    <header class="contact-hero">
+        <p class="hero-eyebrow">Contact</p>
+        <h1>Let's Create Together</h1>
+        <p class="contact">I'm always excited to collaborate on new projects or just chat about design, creativity, and all the beautiful things in life. Drop me a line.</p>
     </header>
 
-    <section class="contact-container">
-        <h2>Contact Me</h2>
-        <form class="contact-form" action="#" method="post">
-            <label for="name">Name</label>
-            <input type="text" id="name" name="name" placeholder="Your full name" required>
-
-            <label for="email">Email</label>
-            <input type="email" id="email" name="email" placeholder="you@example.com" required>
-
-            <label for="message">Message</label>
-            <textarea id="message" name="message" placeholder="Write your message here..." required></textarea>
-
-            <button type="submit">Send Message</button>
-        </form>
-    </section>
-
-    <!-- Table -->
-    <section id="table">
-        <h2>My Weekly Schedule</h2>
-        <table border="1">
-            <tr>
-                <th>Day</th>
-                <th>Activities</th>
-                <th> When you can reach me</th>
-            </tr>
-            <tr>
-                <td>Saturday</td>
-                <td> Classes</td>
-                <td>5pm - 11:59pm</td>
-            </tr>
-            <tr>
-                <td>Sunday</td>
-                <td>Classes </td>
-                <td>3:30pm - 11:59pm</td>
-            </tr>
-            <tr>
-                <td>Monday</td>
-                <td>Classes</td>
-                <td>2pm - 11:59pm</td>
-            </tr>
-            <tr>
-                <td>Tuesday</td>
-                <td>Classes</td>
-                <td>3:30pm - 11:59pm</td>
-            </tr>
-            <tr>
-                <td>Wednesday</td>
-                <td>Classes</td>
-                <td>3:30pm - 11:59pm</td>               
-            </tr>
-            <tr>
-                <td>Thursday</td>
-                <td> Study, Family Time</td>               
-                <td>8am - 11:59pm</td>
-            </tr>
-            <tr>
-                <td colspan="3">Weekend: Family Time and Gaming</td>
-            </tr>
-        </table>
-    </section>
+    <main class="contact-layout">
+        <section class="contact-info">
+            <h2>Direct Contact</h2>
+            <p class="contact-note">Reach me directly through any of these platforms.</p>
+            <ul class="contact-links">
+                <li class="contact-link-item">
+                    <span class="info-label">LinkedIn</span>
+                    <a href="https://linkedin.com/in/mimia-mozammel-572a623a9" target="_blank" rel="noopener">mimia-mozammel-572a623a9</a>
+                </li>
+                <li class="contact-link-item">
+                    <span class="info-label">GitHub</span>
+                    <a href="https://github.com/mimia578" target="_blank" rel="noopener">mimia578</a>
+                </li>
+                <li class="contact-link-item">
+                    <span class="info-label">Discord</span>
+                    <a href="https://discord.com/users/mimia3748" target="_blank" rel="noopener">mimia3748</a>
+                </li>
+                <li class="contact-link-item">
+                    <span class="info-label">Email</span>
+                    <a href="mailto:mimia.mozammel@gmail.com">mimia.mozammel@gmail.com</a>
+                </li>
+            </ul>
+        </section>
+    </main>
     
 </body>
 </html>
