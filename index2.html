@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mimia Mozammel</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0;}
+:root{
+  --ivory:#F7F3EE;
+  --linen:#EEE8DF;
+  --sand:#E0D5C5;
+  --warm:#C9A87C;
+  --taupe:#A08060;
+  --brown:#5C3D2E;
+  --dark:#2A1A10;
+  --accent:#B07040;
+  --blush:#E8C4B8;
+}
+body{background:var(--ivory);font-family:'DM Sans',sans-serif;color:var(--dark);overflow-x:hidden;}
+
+/* NAV */
+nav{display:flex;justify-content:space-between;align-items:center;padding:10px 32px;background:rgba(247,243,238,.86);border-bottom:1px solid var(--sand);position:sticky;top:0;z-index:100;backdrop-filter:blur(8px);transition:padding .25s ease,box-shadow .25s ease,background .25s ease;}
+nav.scrolled{padding:8px 32px;background:rgba(247,243,238,.94);box-shadow:0 8px 24px rgba(42,26,16,.08);}
+.nav-logo{font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:700;color:var(--dark);letter-spacing:.02em;transition:transform .25s ease;}
+.nav-links{display:flex;gap:0;align-items:center;}
+.nav-links a{font-size:11px;font-weight:600;color:var(--taupe);text-decoration:none;padding:6px 14px;letter-spacing:.08em;text-transform:uppercase;transition:color .2s,transform .2s;position:relative;}
+.nav-links a::after{content:'';position:absolute;left:14px;right:14px;bottom:4px;height:1px;background:var(--accent);transform:scaleX(0);transform-origin:left;transition:transform .25s ease;}
+.nav-links a:hover{color:var(--dark);transform:translateY(-1px);}
+.nav-links a:hover::after{transform:scaleX(1);}
+.nav-cta{background:var(--dark)!important;color:var(--ivory)!important;border-radius:2px;padding:6px 16px!important;transition:background .22s ease,transform .22s ease,box-shadow .22s ease!important;}
+.nav-cta:hover{background:var(--accent)!important;color:#fff!important;transform:translateY(-1px);box-shadow:0 6px 16px rgba(176,112,64,.28);}
+
+/* HERO - magazine split */
+.hero{display:grid;grid-template-columns:1fr 1fr;min-height:92vh;border-bottom:1px solid var(--sand);}
+.hero-img-side{position:relative;overflow:hidden;background:#2A1A10;}
+.hero-img-side img{width:100%;height:100%;object-fit:cover;object-position:center top;display:block;filter:sepia(15%) contrast(1.05);transition:transform .6s ease,filter .6s ease;}
+.hero-img-side:hover img{transform:scale(1.04);filter:sepia(8%) contrast(1.1);}
+.hero-img-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(42,26,16,.7) 0%,rgba(42,26,16,.1) 50%,transparent 100%);}
+.hero-img-tag{position:absolute;bottom:36px;left:36px;right:36px;}
+.hero-img-tag .name-big{font-family:'Cormorant Garamond',serif;font-size:clamp(52px,5vw,72px);font-weight:700;color:#fff;line-height:.95;letter-spacing:-.02em;}
+.hero-img-tag .role-line{font-size:12px;font-weight:500;color:rgba(255,255,255,.7);letter-spacing:.15em;text-transform:uppercase;margin-top:14px;border-top:1px solid rgba(255,255,255,.3);padding-top:14px;}
+
+.hero-right{display:flex;flex-direction:column;justify-content:center;padding:60px 54px;background:var(--ivory);}
+.eyebrow{font-size:11px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--taupe);margin-bottom:24px;display:flex;align-items:center;gap:10px;}
+.eyebrow::before{content:'';display:block;width:32px;height:1px;background:var(--taupe);}
+.hero-headline{font-family:'Cormorant Garamond',serif;font-size:clamp(38px,4vw,58px);font-weight:600;line-height:1.1;color:var(--dark);margin-bottom:10px;}
+.hero-headline em{font-style:italic;color:var(--accent);}
+.hero-bio{font-size:15px;line-height:1.85;color:var(--taupe);margin-bottom:36px;max-width:400px;}
+
+.stat-bar{display:flex;gap:0;border:1px solid var(--sand);border-radius:2px;margin-bottom:36px;overflow:hidden;}
+.stat-unit{flex:1;padding:18px 20px;border-right:1px solid var(--sand);text-align:center;}
+.stat-unit:last-child{border-right:none;}
+.stat-n{font-family:'Cormorant Garamond',serif;font-size:32px;font-weight:700;color:var(--dark);}
+.stat-l{font-size:10.5px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--taupe);margin-top:4px;}
+.stat-unit{transition:background .22s ease;}
+.stat-unit:hover{background:var(--linen);}
+
+.cta-row{display:flex;gap:10px;flex-wrap:wrap;}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:13px 26px;font-size:13px;font-weight:500;text-decoration:none;border-radius:2px;letter-spacing:.04em;transition:all .2s;}
+.btn-dark{background:var(--dark);color:var(--ivory);}
+.btn-dark:hover{background:var(--accent);transform:translateY(-2px);box-shadow:0 10px 20px rgba(42,26,16,.18);}
+.btn-ghost{background:transparent;color:var(--dark);border:1px solid var(--sand);}
+.btn-ghost:hover{border-color:var(--taupe);background:var(--linen);transform:translateY(-2px);}
+.btn svg{width:14px;height:14px;flex-shrink:0;}
+
+/* SECTION WRAPPER */
+.wrap{max-width:1200px;margin:0 auto;padding:0 40px;}
+.section{padding:72px 0;border-bottom:1px solid var(--sand);}
+.sec-eyebrow{font-size:11px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--taupe);margin-bottom:16px;display:flex;align-items:center;gap:10px;}
+.sec-eyebrow::before{content:'';display:block;width:28px;height:1px;background:var(--taupe);}
+.sec-title{font-family:'Cormorant Garamond',serif;font-size:clamp(32px,4vw,48px);font-weight:600;color:var(--dark);margin-bottom:40px;line-height:1.1;}
+
+/* ABOUT - 2 col */
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:start;}
+.about-card{background:var(--linen);border-radius:2px;padding:28px 30px;border:1px solid var(--sand);transition:transform .22s ease,box-shadow .22s ease;}
+.about-card:hover{transform:translateY(-3px);box-shadow:0 10px 20px rgba(42,26,16,.08);}
+.ac-label{font-size:11px;font-weight:600;letter-spacing:.15em;text-transform:uppercase;color:var(--taupe);margin-bottom:16px;}
+.lang-row{display:flex;justify-content:space-between;align-items:center;padding:11px 0;border-bottom:1px solid var(--sand);}
+.lang-row:last-child{border-bottom:none;}
+.lang-name{font-size:15px;font-weight:500;color:var(--dark);}
+.lang-badge{font-size:12px;font-weight:600;color:var(--accent);letter-spacing:.05em;}
+.hobby-wrap{display:flex;flex-wrap:wrap;gap:8px;}
+.htag{background:#fff;border:1px solid var(--sand);border-radius:2px;padding:7px 15px;font-size:13px;color:var(--brown);font-weight:500;transition:all .2s;cursor:default;}
+.htag:hover{background:var(--dark);color:var(--ivory);border-color:var(--dark);}
+.act-list .act-item{display:flex;gap:16px;padding:14px 0;border-bottom:1px solid var(--sand);}
+.act-list .act-item:last-child{border-bottom:none;}
+.act-num{font-family:'Cormorant Garamond',serif;font-size:22px;color:var(--warm);font-weight:600;min-width:28px;}
+.act-body .act-t{font-size:15px;font-weight:600;color:var(--dark);}
+.act-body .act-s{font-size:13px;color:var(--taupe);margin-top:2px;}
+
+/* EDU */
+.edu-block{background:var(--linen);border:1px solid var(--sand);border-radius:2px;padding:36px 40px;display:grid;grid-template-columns:auto 1fr;gap:48px;}
+.edu-yr{writing-mode:vertical-rl;text-orientation:mixed;font-size:11px;font-weight:600;letter-spacing:.15em;text-transform:uppercase;color:var(--taupe);}
+.edu-degree{font-family:'Cormorant Garamond',serif;font-size:clamp(22px,3vw,30px);font-weight:700;color:var(--dark);margin-bottom:4px;}
+.edu-uni{font-size:15px;color:var(--taupe);margin-bottom:20px;}
+.gpa-badge{display:inline-flex;align-items:center;gap:8px;background:var(--dark);color:var(--ivory);border-radius:2px;padding:8px 18px;font-size:13px;font-weight:500;margin-bottom:28px;}
+.cw-label{font-size:11px;font-weight:600;letter-spacing:.15em;text-transform:uppercase;color:var(--taupe);margin-bottom:12px;}
+.cw-tags{display:flex;flex-wrap:wrap;gap:7px;}
+.cw-tag{background:#fff;border:1px solid var(--sand);border-radius:2px;padding:5px 14px;font-size:13px;font-weight:500;color:var(--brown);}
+
+/* SKILLS */
+.skills-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--sand);border:1px solid var(--sand);border-radius:2px;overflow:hidden;}
+.sg{background:var(--linen);padding:26px 24px;transition:transform .22s ease,background .22s ease;}
+.sg:hover{transform:translateY(-4px);background:#f3ede5;}
+.sg-cat{font-size:11px;font-weight:600;letter-spacing:.15em;text-transform:uppercase;color:var(--accent);margin-bottom:14px;}
+.sg-pills{display:flex;flex-wrap:wrap;gap:6px;}
+.sg-pill{background:#fff;border:1px solid var(--sand);border-radius:2px;padding:5px 12px;font-size:13px;color:var(--brown);font-weight:500;}
+
+/* RECOGNITION */
+.recog-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--sand);border:1px solid var(--sand);border-radius:2px;overflow:hidden;}
+.rc{background:var(--linen);padding:28px 26px;position:relative;transition:transform .22s ease,background .22s ease;}
+.rc:hover{transform:translateY(-4px);background:#f3ede5;}
+.rc-num{font-family:'Cormorant Garamond',serif;font-size:64px;font-weight:700;color:var(--sand);line-height:1;margin-bottom:12px;display:block;}
+.rc-title{font-size:15px;font-weight:600;color:var(--dark);margin-bottom:8px;line-height:1.4;}
+.rc-sub{font-size:13px;color:var(--taupe);line-height:1.65;}
+.rc-year{font-size:11px;font-weight:700;color:var(--accent);letter-spacing:.1em;margin-top:14px;text-transform:uppercase;}
+
+/* PHOTOGRAPHY */
+.photo-section{padding:72px 0;}
+.photo-intro{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:start;margin-bottom:48px;}
+.photo-intro p{font-size:15px;line-height:1.85;color:var(--taupe);}
+.photo-grid{display:grid;grid-template-columns:repeat(12,1fr);grid-template-rows:auto;gap:12px;}
+.pg-main{grid-column:1/8;grid-row:1/3;aspect-ratio:4/5;background:var(--linen);border:1px solid var(--sand);border-radius:2px;overflow:hidden;position:relative;}
+.pg-sm1{grid-column:8/13;grid-row:1/2;aspect-ratio:16/9;background:var(--linen);border:1px solid var(--sand);border-radius:2px;overflow:hidden;position:relative;}
+.pg-sm2{grid-column:8/13;grid-row:2/3;aspect-ratio:16/9;background:var(--linen);border:1px solid var(--sand);border-radius:2px;overflow:hidden;position:relative;}
+.pg-wide{grid-column:1/13;grid-row:3/4;aspect-ratio:21/7;background:var(--linen);border:1px solid var(--sand);border-radius:2px;overflow:hidden;position:relative;}
+.pg-main,.pg-sm1,.pg-sm2,.pg-wide{transition:transform .22s ease,box-shadow .22s ease;}
+.pg-main:hover,.pg-sm1:hover,.pg-sm2:hover,.pg-wide:hover{transform:translateY(-4px);box-shadow:0 14px 24px rgba(42,26,16,.12);}
+.photo-slot{width:100%;height:100%;object-fit:cover;display:block;transition:transform .5s ease;}
+.pg-main:hover .photo-slot,.pg-sm1:hover .photo-slot,.pg-sm2:hover .photo-slot,.pg-wide:hover .photo-slot{transform:scale(1.05);}
+.photo-placeholder{width:100%;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;background:var(--linen);}
+.photo-placeholder svg{width:28px;height:28px;color:var(--warm);opacity:.5;}
+.photo-placeholder span{font-size:12px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--taupe);opacity:.7;}
+.photo-cat-tag{position:absolute;bottom:14px;left:14px;background:rgba(42,26,16,.85);color:rgba(247,243,238,.9);font-size:11px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;padding:6px 14px;border-radius:1px;backdrop-filter:blur(6px);}
+
+/* KEY STATS STRIP */
+.stats-strip{background:var(--dark);padding:48px 40px;display:flex;gap:0;justify-content:center;}
+.strip-stat{flex:1;max-width:200px;text-align:center;border-right:1px solid rgba(255,255,255,.1);padding:0 32px;}
+.strip-stat:last-child{border-right:none;}
+.strip-n{font-family:'Cormorant Garamond',serif;font-size:48px;font-weight:700;color:var(--ivory);line-height:1;}
+.strip-l{font-size:11px;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.5);margin-top:8px;}
+.strip-stat{transition:transform .22s ease;}
+.strip-stat:hover{transform:translateY(-3px);}
+
+/* SCROLL REVEAL */
+.section,.photo-section,.stats-strip{opacity:0;transform:translateY(22px);transition:opacity .7s ease,transform .7s ease;}
+.section.in-view,.photo-section.in-view,.stats-strip.in-view{opacity:1;transform:none;}
+
+/* FOOTER */
+footer{padding:48px 40px;display:flex;justify-content:space-between;align-items:center;background:var(--ivory);border-top:1px solid var(--sand);}
+.footer-name{font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:600;color:var(--taupe);}
+.footer-links{display:flex;gap:24px;}
+.footer-links a{font-size:12px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--taupe);text-decoration:none;transition:color .2s;}
+.footer-links a:hover{color:var(--dark);}
+
+/* MOBILE */
+@media(max-width:900px){
+  nav{padding:9px 20px;}
+  nav.scrolled{padding:8px 20px;}
+  .hero{grid-template-columns:1fr;min-height:auto;}
+  .hero-img-side{height:60vw;min-height:280px;}
+  .hero-right{padding:40px 24px;}
+  .wrap{padding:0 20px;}
+  .edu-block{grid-template-columns:1fr;gap:20px;}
+  .edu-yr{writing-mode:horizontal-tb;}
+  .skills-grid{grid-template-columns:1fr 1fr;}
+  .recog-grid{grid-template-columns:1fr;}
+  .photo-grid{grid-template-columns:1fr 1fr;}
+  .pg-main{grid-column:1/3;grid-row:auto;aspect-ratio:4/3;}
+  .pg-sm1,.pg-sm2{grid-column:auto;grid-row:auto;aspect-ratio:4/3;}
+  .pg-wide{grid-column:1/3;aspect-ratio:16/7;}
+  .stats-strip{flex-wrap:wrap;gap:24px;padding:36px 20px;}
+  .strip-stat{border-right:none;flex:1 0 40%;}
+  .about-grid{grid-template-columns:1fr;}
+  footer{flex-direction:column;gap:20px;text-align:center;}
+}
+@media(max-width:600px){
+  .skills-grid{grid-template-columns:1fr;}
+  .photo-grid{grid-template-columns:1fr;}
+  .pg-main,.pg-sm1,.pg-sm2,.pg-wide{grid-column:1/2;aspect-ratio:4/3;}
+  .stat-bar{flex-direction:column;}
+  .stat-unit{border-right:none;border-bottom:1px solid var(--sand);}
+  .stat-unit:last-child{border-bottom:none;}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-logo">Mimia Mozammel</div>
+  <div class="nav-links">
+    <a href="index.html">Home</a>
+    <a href="project.html">Projects</a>
+    <a href="contactpage.html" class="nav-cta">Contact</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-img-side">
+    <img src="mypic.jpg" alt="Mimia Mozammel"
+      onerror="this.style.display='none';this.nextElementSibling.nextElementSibling.style.background='#5C3D2E'">
+    <div class="hero-img-overlay"></div>
+    <div class="hero-img-tag">
+      <div class="name-big">Mimia<br>Mozammel</div>
+      <div class="role-line">CSE Graduate &nbsp;·&nbsp; Full-Stack Developer &nbsp;·&nbsp; UI/UX Designer</div>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="eyebrow">Based in Dhaka, Bangladesh</div>
+    <h1 class="hero-headline">Building things<br>that are <em>beautiful</em><br>& functional.</h1>
+    <p class="hero-bio">I design and build AI-powered web platforms, mobile apps, and e-commerce systems — with a strong eye for aesthetics, branding, and thoughtful UX.</p>
+
+    <div class="stat-bar">
+      <div class="stat-unit"><div class="stat-n">3.85</div><div class="stat-l">CGPA</div></div>
+      <div class="stat-unit"><div class="stat-n">4</div><div class="stat-l">Live Projects</div></div>
+      <div class="stat-unit"><div class="stat-n">2025</div><div class="stat-l">Graduate</div></div>
+    </div>
+
+    <div class="cta-row">
+      <a class="btn btn-dark" href="https://linkedin.com/in/mimia-mozammel-572a623a9" target="_blank">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M19 3a2 2 0 012 2v14a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h14m-.5 15.5v-5.3a3.26 3.26 0 00-3.26-3.26c-.85 0-1.84.52-2.32 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 011.4 1.4v4.93h2.79M6.88 8.56a1.68 1.68 0 001.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 00-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z"/></svg>
+        LinkedIn
+      </a>
+      <a class="btn btn-ghost" href="https://github.com/mimia578" target="_blank">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2A10 10 0 002 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33.85 0 1.71.11 2.5.33 1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0012 2z"/></svg>
+        GitHub
+      </a>
+    </div>
+  </div>
+</div>
+
+<!-- STATS STRIP -->
+<div class="stats-strip">
+  <div class="strip-stat"><div class="strip-n">3.85</div><div class="strip-l">CGPA / 4.00</div></div>
+  <div class="strip-stat"><div class="strip-n">4</div><div class="strip-l">Live Projects</div></div>
+  <div class="strip-stat"><div class="strip-n">2</div><div class="strip-l">Awards / 2025</div></div>
+  <div class="strip-stat"><div class="strip-n">1</div><div class="strip-l">Intl. Conference</div></div>
+</div>
+
+<!-- EDUCATION -->
+<div class="wrap">
+  <div class="section">
+    <div class="sec-eyebrow">Academic background</div>
+    <div class="sec-title">Education</div>
+    <div class="edu-block">
+      <div class="edu-yr">2022 — 2025</div>
+      <div>
+        <div class="edu-degree">BSc Computer Science &amp; Engineering</div>
+        <div class="edu-uni">BRAC University, Dhaka</div>
+        <div class="gpa-badge">
+          <svg viewBox="0 0 24 24" fill="currentColor" style="width:13px;height:13px;"><path d="M12 3L1 9l11 6 9-4.91V17h2V9L12 3zM5 13.18v4L12 21l7-3.82v-4L12 17l-7-3.82z"/></svg>
+          CGPA: 3.85 / 4.00 &nbsp;·&nbsp; Merit Scholarship
+        </div>
+        <div class="cw-label">Relevant Coursework</div>
+        <div class="cw-tags">
+          <span class="cw-tag">Data Structures</span><span class="cw-tag">Algorithms</span>
+          <span class="cw-tag">Operating Systems</span><span class="cw-tag">Computer Networks</span>
+          <span class="cw-tag">Artificial Intelligence</span><span class="cw-tag">Software Engineering</span>
+          <span class="cw-tag">Database Systems</span><span class="cw-tag">Compiler Design</span>
+          <span class="cw-tag">Computer Graphics</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SKILLS -->
+<div class="wrap">
+  <div class="section">
+    <div class="sec-eyebrow">Capabilities</div>
+    <div class="sec-title">Technical Skills</div>
+    <div class="skills-grid">
+      <div class="sg">
+        <div class="sg-cat">Languages</div>
+        <div class="sg-pills"><span class="sg-pill">JavaScript</span><span class="sg-pill">Python</span><span class="sg-pill">Java</span><span class="sg-pill">PHP</span></div>
+      </div>
+      <div class="sg">
+        <div class="sg-cat">Stack &amp; Mobile</div>
+        <div class="sg-pills"><span class="sg-pill">MERN</span><span class="sg-pill">React Native</span><span class="sg-pill">Laravel</span><span class="sg-pill">Expo</span></div>
+      </div>
+      <div class="sg">
+        <div class="sg-cat">Design &amp; Visual</div>
+        <div class="sg-pills"><span class="sg-pill">Figma</span><span class="sg-pill">Canva</span><span class="sg-pill">UI/UX</span><span class="sg-pill">Video Editing</span><span class="sg-pill">Branding</span></div>
+      </div>
+      <div class="sg">
+        <div class="sg-cat">Security</div>
+        <div class="sg-pills"><span class="sg-pill">SQLi</span><span class="sg-pill">XSS</span><span class="sg-pill">IDOR</span><span class="sg-pill">Clickjacking</span><span class="sg-pill">NoSQLi</span></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- RECOGNITION -->
+<div class="wrap">
+  <div class="section">
+    <div class="sec-eyebrow">Achievements</div>
+    <div class="sec-title">Recognition</div>
+    <div class="recog-grid">
+      <div class="rc">
+        <span class="rc-num">01</span>
+        <div class="rc-title">Poster Accepted — 12th NSysS 2025</div>
+        <div class="rc-sub">International Conference on Next-gen Computing, Communication &amp; Security. Play-to-Secure research.</div>
+        <div class="rc-year">2025</div>
+      </div>
+      <div class="rc">
+        <span class="rc-num">02</span>
+        <div class="rc-title">7th Place — BRAC University Poster Competition</div>
+        <div class="rc-sub">Cyber-security poster ranked 7th out of 100+ university-wide submissions.</div>
+        <div class="rc-year">2025</div>
+      </div>
+      <div class="rc">
+        <span class="rc-num">03</span>
+        <div class="rc-title">Merit-Based Scholarship</div>
+        <div class="rc-sub">Awarded for academic performance and consistent results during undergraduate studies.</div>
+        <div class="rc-year">2025</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- PHOTOGRAPHY SECTION -->
+<div class="wrap">
+  <div class="photo-section">
+    <div class="sec-eyebrow">Visual work</div>
+    <div class="sec-title">Photography</div>
+    <div class="photo-intro">
+      <p>Capturing moments through a thoughtful lens — from product and fashion photography to lifestyle and travel. Photography is where my eye for aesthetics meets the real world.</p>
+      <p>I shoot with an emphasis on mood, light, and composition — the same principles I bring to my UI/UX and branding work.</p>
+    </div>
+
+    <div class="photo-grid">
+      <!-- MAIN large image -->
+      <div class="pg-main">
+        <img class="photo-slot" src="photo1.jpg" alt="Photography 1"
+          onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+        <div class="photo-placeholder">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20 5h-3.17L15 3H9L7.17 5H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm-8 13c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm0-8c-1.65 0-3 1.35-3 3s1.35 3 3 3 3-1.35 3-3-1.35-3-3-3z"/></svg>
+          <span>Add photo</span>
+        </div>
+        <div class="photo-cat-tag">Portrait</div>
+      </div>
+
+      <!-- Small top-right -->
+      <div class="pg-sm1">
+        <img class="photo-slot" src="photo2.jpg" alt="Photography 2"
+          onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+        <div class="photo-placeholder">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20 5h-3.17L15 3H9L7.17 5H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm-8 13c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm0-8c-1.65 0-3 1.35-3 3s1.35 3 3 3 3-1.35 3-3-1.35-3-3-3z"/></svg>
+          <span>Add photo</span>
+        </div>
+        <div class="photo-cat-tag">Lifestyle</div>
+      </div>
+
+      <!-- Small bottom-right -->
+      <div class="pg-sm2">
+        <img class="photo-slot" src="photo3.jpg" alt="Photography 3"
+          onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+        <div class="photo-placeholder">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20 5h-3.17L15 3H9L7.17 5H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm-8 13c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm0-8c-1.65 0-3 1.35-3 3s1.35 3 3 3 3-1.35 3-3-1.35-3-3-3z"/></svg>
+          <span>Add photo</span>
+        </div>
+        <div class="photo-cat-tag">Product</div>
+      </div>
+
+      <!-- Wide banner -->
+      <div class="pg-wide">
+        <img class="photo-slot" src="photo4.jpg" alt="Photography 4"
+          onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+        <div class="photo-placeholder">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20 5h-3.17L15 3H9L7.17 5H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm-8 13c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm0-8c-1.65 0-3 1.35-3 3s1.35 3 3 3 3-1.35 3-3-1.35-3-3-3z"/></svg>
+          <span>Add photo</span>
+        </div>
+        <div class="photo-cat-tag">Fashion &amp; Aesthetics</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ABOUT / PERSONAL -->
+<div class="wrap">
+  <div class="section">
+    <div class="sec-eyebrow">Personal</div>
+    <div class="sec-title">About Me</div>
+    <div class="about-grid">
+      <div>
+        <div class="about-card" style="margin-bottom:14px;">
+          <div class="ac-label">Languages</div>
+          <div class="lang-row"><span class="lang-name">Bengali</span><span class="lang-badge">Native</span></div>
+          <div class="lang-row"><span class="lang-name">English</span><span class="lang-badge">Professional</span></div>
+        </div>
+        <div class="about-card">
+          <div class="ac-label">Hobbies &amp; Interests</div>
+          <div class="hobby-wrap">
+            <span class="htag">Design</span><span class="htag">Beading</span>
+            <span class="htag">Video Editing</span><span class="htag">Reading</span>
+            <span class="htag">Photography</span><span class="htag">Aesthetics</span>
+            <span class="htag">Crafts</span>
+          </div>
+        </div>
+      </div>
+      <div class="about-card">
+        <div class="ac-label">Activities</div>
+        <div class="act-list">
+          <div class="act-item">
+            <div class="act-num">01</div>
+            <div class="act-body">
+              <div class="act-t">Founder — BeadZen</div>
+              <div class="act-s">Live e-commerce business &nbsp;·&nbsp; 2024–Present</div>
+            </div>
+          </div>
+          <div class="act-item">
+            <div class="act-num">02</div>
+            <div class="act-body">
+              <div class="act-t">Conference Presenter — NSysS 2025</div>
+              <div class="act-s">Play-to-Secure research poster, international conference</div>
+            </div>
+          </div>
+          <div class="act-item">
+            <div class="act-num">03</div>
+            <div class="act-body">
+              <div class="act-t">UI/UX &amp; Digital Content</div>
+              <div class="act-s">Figma, Canva, branding, video editing</div>
+            </div>
+          </div>
+          <div class="act-item">
+            <div class="act-num">04</div>
+            <div class="act-body">
+              <div class="act-t">Photography &amp; Visual Storytelling</div>
+              <div class="act-s">Product, lifestyle, fashion &amp; aesthetic photography</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-name">Mimia Mozammel &nbsp;·&nbsp; 2025</div>
+  <div class="footer-links">
+    <a href="mailto:mimia.mozammel@gmail.com">Email</a>
+    <a href="https://linkedin.com/in/mimia-mozammel-572a623a9" target="_blank">LinkedIn</a>
+    <a href="https://github.com/mimia578" target="_blank">GitHub</a>
+    <a href="contactpage.html">Contact</a>
+  </div>
+</footer>
+
+<script>
+const nav=document.querySelector('nav');
+window.addEventListener('scroll',()=>{
+  nav.classList.toggle('scrolled',window.scrollY>12);
+});
+
+const revealTargets=document.querySelectorAll('.section,.photo-section,.stats-strip');
+if('IntersectionObserver' in window){
+  const revealObserver=new IntersectionObserver((entries,observer)=>{
+    entries.forEach(entry=>{
+      if(entry.isIntersecting){
+        entry.target.classList.add('in-view');
+        observer.unobserve(entry.target);
+      }
+    });
+  },{threshold:0.14});
+
+  revealTargets.forEach(el=>revealObserver.observe(el));
+}else{
+  revealTargets.forEach(el=>el.classList.add('in-view'));
+}
+</script>
+
+</body>
+</html>
