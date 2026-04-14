@@ -175,6 +175,8 @@ nav{display:flex;justify-content:space-between;align-items:center;padding:10px 4
 .mini-card{background:var(--sand);border:1.5px solid rgba(180,140,100,.25);border-radius:14px;padding:24px 24px;}
 .mini-title{font-family:'Cormorant Garamond',serif;font-size:30px;font-weight:700;color:var(--brown-d);margin-bottom:16px;letter-spacing:.02em;}
 
+.bottom-grid.two-col{grid-template-columns:1fr 1fr;}
+
 .lang-item{display:flex;justify-content:space-between;align-items:center;padding:9px 0;border-bottom:1px solid rgba(180,140,100,.2);}
 .lang-item:last-child{border-bottom:none;}
 .lang-name{font-family:'Cormorant Garamond',serif;font-size:18px;font-weight:700;color:var(--brown-d);}
@@ -183,6 +185,21 @@ nav{display:flex;justify-content:space-between;align-items:center;padding:10px 4
 .hobbies{display:flex;flex-wrap:wrap;gap:8px;}
 .hobby{background:rgba(255,255,255,.6);border:1px solid rgba(180,140,100,.3);border-radius:8px;padding:6px 14px;font-family:'Cormorant Garamond',serif;font-size:16px;font-weight:600;color:var(--brown-d);transition:all .2s;cursor:default;}
 .hobby:hover{background:var(--accent);color:#fff;border-color:var(--accent);}
+
+/* HOBBIES SECTION */
+.hobby-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;}
+.hobby-card{background:rgba(255,255,255,.55);border:1.5px solid rgba(180,140,100,.25);border-radius:14px;padding:20px 18px;transition:all .22s;}
+.hobby-card:hover{transform:translateY(-4px);border-color:var(--accent);background:rgba(255,255,255,.78);}
+.hobby-name{font-family:'Cormorant Garamond',serif;font-size:24px;font-weight:700;color:var(--brown-d);line-height:1.1;margin-bottom:8px;}
+.hobby-note{font-size:15px;color:var(--brown-l);line-height:1.5;}
+
+/* VIDEO SECTION */
+.video-section .sec-title{margin-bottom:20px;}
+.video-intro{font-size:17px;color:rgba(245,237,216,.82);max-width:760px;margin-bottom:26px;line-height:1.6;}
+.video-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;justify-items:center;}
+.video-card{width:100%;max-width:240px;background:rgba(245,237,216,.05);border:1px solid rgba(245,237,216,.2);border-radius:14px;padding:12px;}
+.video-card video{display:block;width:100%;aspect-ratio:9/16;border-radius:10px;background:#20150f;object-fit:cover;}
+.video-label{font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.12em;color:var(--accent-l);margin-top:10px;}
 
 .act-item{display:flex;align-items:flex-start;gap:10px;padding:9px 0;border-bottom:1px solid rgba(180,140,100,.18);}
 .act-item:last-child{border-bottom:none;}
@@ -237,7 +254,9 @@ nav{display:flex;justify-content:space-between;align-items:center;padding:10px 4
   .edu-detail{padding-left:0;padding-top:20px;}
   .skills-grid{grid-template-columns:1fr 1fr;}
   .recog-grid{grid-template-columns:1fr;}
-  .bottom-grid{grid-template-columns:1fr;}
+  .bottom-grid,.bottom-grid.two-col{grid-template-columns:1fr;}
+  .hobby-grid{grid-template-columns:1fr 1fr;}
+  .video-grid{grid-template-columns:1fr 1fr;}
 }
 @media(max-width:640px){
   nav{padding:8px 14px;flex-wrap:wrap;row-gap:8px;justify-content:center;}
@@ -265,6 +284,10 @@ nav{display:flex;justify-content:space-between;align-items:center;padding:10px 4
   .photo-banner{min-height:220px;max-height:56vh;aspect-ratio:16/9;}
   .photo-overlay-title{font-size:clamp(34px,12vw,54px);}
   .photo-overlay-sub{font-size:14px;max-width:92%;text-align:center;line-height:1.35;letter-spacing:.02em;}
+
+  .hobby-card{padding:16px 14px;}
+  .hobby-name{font-size:22px;}
+  .video-grid{grid-template-columns:1fr;}
 
   .footer{padding:22px 14px;}
   .footer p{font-size:19px;}
@@ -447,25 +470,43 @@ nav{display:flex;justify-content:space-between;align-items:center;padding:10px 4
 <!-- LANGUAGE + HOBBIES + ACTIVITIES -->
 <div class="content-section band band-sand section-reveal" id="s-misc">
   <div class="inner">
-    <div class="bottom-grid">
+    <div class="bottom-grid two-col">
       <div class="mini-card">
         <div class="mini-title">Language</div>
         <div class="lang-item"><span class="lang-name">Bengali</span><span class="lang-level">Native</span></div>
         <div class="lang-item"><span class="lang-name">English</span><span class="lang-level">Professional</span></div>
       </div>
       <div class="mini-card">
-        <div class="mini-title">Hobbies</div>
-        <div class="hobbies">
-          <span class="hobby">Design</span><span class="hobby">Beading</span>
-          <span class="hobby">Video Editing</span><span class="hobby">Reading</span>
-          <span class="hobby">Aesthetics</span><span class="hobby">Crafts</span>
-        </div>
-      </div>
-      <div class="mini-card">
         <div class="mini-title">Activities</div>
         <div class="act-item"><div class="act-dot"></div><div><div class="act-title">Founder — BeadZen</div><div class="act-sub">Live e-commerce business · 2024–Present</div></div></div>
         <div class="act-item"><div class="act-dot"></div><div><div class="act-title">Conference Presenter — NSysS 2025</div><div class="act-sub">Play-to-Secure research poster</div></div></div>
         <div class="act-item"><div class="act-dot"></div><div><div class="act-title">UI/UX & Digital Content</div><div class="act-sub">Figma, Canva, branding, video editing</div></div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- HOBBIES -->
+<div class="content-section band band-cream section-reveal" id="s-hobbies">
+  <div class="inner">
+    <div class="sec-label">Beyond Development</div>
+    <div class="sec-title">Hobbies & Creative Interests</div>
+    <div class="hobby-grid">
+      <div class="hobby-card">
+        <div class="hobby-name">Photography</div>
+        <div class="hobby-note">Capturing calm moments, textures, and stories from everyday places.</div>
+      </div>
+      <div class="hobby-card">
+        <div class="hobby-name">Short-Form Content</div>
+        <div class="hobby-note">Creating quick reels and visual snippets that blend design with storytelling.</div>
+      </div>
+      <div class="hobby-card">
+        <div class="hobby-name">Reading</div>
+        <div class="hobby-note">Exploring ideas through books on creativity, growth, and technology.</div>
+      </div>
+      <div class="hobby-card">
+        <div class="hobby-name">Other Creative Work</div>
+        <div class="hobby-note">Beading, crafts, and visual experimentation across digital and physical mediums.</div>
       </div>
     </div>
   </div>
@@ -479,6 +520,38 @@ nav{display:flex;justify-content:space-between;align-items:center;padding:10px 4
     <div class="photo-overlay">
       <div class="photo-overlay-title">Photography</div>
       <div class="photo-overlay-sub">These images, all my own, offer a glimpse into how I see the world.</div>
+    </div>
+  </div>
+</div>
+
+<!-- VIDEOS -->
+<div class="content-section band band-brown section-reveal video-section" id="s-videos">
+  <div class="inner">
+    <div class="sec-label">Short Form Content</div>
+    <div class="sec-title">Video Showcase</div>
+    <p class="video-intro">A few of my short-form pieces.</p>
+    <div class="video-grid">
+      <div class="video-card">
+        <video controls muted preload="metadata">
+          <source src="assets/vid1.mov" type="video/mp4">
+          Your browser does not support the video tag.
+        </video>
+        <div class="video-label">vid1</div>
+      </div>
+      <div class="video-card">
+        <video controls muted preload="metadata">
+          <source src="assets/vid2.mov" type="video/mp4">
+          Your browser does not support the video tag.
+        </video>
+        <div class="video-label">vid2</div>
+      </div>
+      <div class="video-card">
+        <video controls muted preload="metadata">
+          <source src="assets/vid3.mov" type="video/mp4">
+          Your browser does not support the video tag.
+        </video>
+        <div class="video-label">vid3</div>
+      </div>
     </div>
   </div>
 </div>
